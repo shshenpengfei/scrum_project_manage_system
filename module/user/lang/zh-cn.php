@@ -58,9 +58,11 @@ $lang->user->keepLogin['on']      = '保持登录';
 $lang->user->loginWithDemoUser    = '使用demo账号登录：';
 
 $lang->user->position['engineer'] = '工程师';
-$lang->user->position['leader'] = '组长';
+$lang->user->position['leader'] = '主管';
 $lang->user->position['manager'] = '经理';
 $lang->user->position['director'] = '总监';
+$lang->user->position['vp'] = 'VP';
+
 
 $lang->user->id        = '用户编号';
 $lang->user->company   = '所属公司';
