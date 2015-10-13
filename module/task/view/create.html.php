@@ -66,7 +66,7 @@ $(function()
       <tr>
           <th class='rowhead'><span style='color: #ff0000'><?php echo $lang->task->value;?></span></th>
           <td>
-              <?php echo html::input('creditvalue', '', 'class="w-80px" ');?>分
+              <?php echo html::input('creditvalue', '0', 'class="w-80px" ');?>分
           </td>
       </tr>
     <tr>

@@ -13,8 +13,7 @@ include 'chosen.html.php';
         $(".p_close").click(function(){
             $(".popbox").hide();
         })
-    })
-
+    }
 </script>
 <style>
     .popm{margin:0 auto;width:200px;height:100px;line-height: 100px;color: #fff;font-size:18px;margin-top: 20%;position: relative;}
@@ -23,7 +22,6 @@ include 'chosen.html.php';
 </style>
 <div class="popbox">
     <div class="popm"><img src="/loading.gif" alt="正在提交中"/>正在提交中....<div class="p_close">关闭</div></div>
-
 </div>
 <div id='header'>
   <table class='cont' id='topbar'>
