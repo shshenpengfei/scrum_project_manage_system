@@ -38,7 +38,7 @@
     </tr>
       <tr>
           <th class='rowhead'><?php echo $lang->story->value;?></th>
-          <td><?php echo html::input('creditvalue', $story->creditvalue, 'class="w-80px"');?></td>
+          <td><?php echo html::input('creditvalue', $story->creditvalue>0?$story->creditvalue:0, 'class="w-80px"');?></td>
       </tr>
     <tr>
       <th class='rowhead'><?php echo $lang->story->spec;?></th>
