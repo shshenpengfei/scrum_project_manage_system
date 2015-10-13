@@ -34,7 +34,7 @@
                             <?php
                             $users=$this->loadModel('user')->getById($item->id);
                             //echo $users->realname;
-                            echo html::a('http://www.pm-my.com/index.php?m=report&f=UserWorktime&u='.$item->id,$users->realname);
+                            echo html::a(PM_SITE.'/index.php?m=report&f=UserWorktime&u='.$item->id,$users->realname);
                             ?>
                         </td>
                         <td>

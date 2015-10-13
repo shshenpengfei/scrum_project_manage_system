@@ -80,6 +80,8 @@ foreach($extConfigFiles as $extConfigFile) include $extConfigFile;
 /* Set default table prefix. */
 if(!isset($config->db->prefix)) $config->db->prefix = 'zt_';
 
+define('PM_SITE','http://pm.wochacha.cn');
+
 /* Define the tables. */
 define('TABLE_COMPANY',       '`' . $config->db->prefix . 'company`');
 define('TABLE_DEPT',          '`' . $config->db->prefix . 'dept`');

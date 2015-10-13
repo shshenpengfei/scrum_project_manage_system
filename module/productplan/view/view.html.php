@@ -16,7 +16,7 @@
 <?php
 
 if(!empty($planStories)){
-$webRoot      = "http://www.pm-my.com/";
+$webRoot      = PM_SITE;
 $defaultTheme = $webRoot . 'theme/default/';
 css::import($defaultTheme . 'gante_styles/css/screen.css', 2.3);
 css::import($defaultTheme . 'gante_styles/css/gantti.css', 2.3);

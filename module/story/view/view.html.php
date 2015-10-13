@@ -16,7 +16,7 @@
 //if(isset($_GET['gante']) && $_GET['gante']=='story'){
 
 if(!empty($story->tasks)){
-$webRoot      = "http://www.pm-my.com/";
+$webRoot      = PM_SITE;
 $defaultTheme = $webRoot . 'theme/default/';
 css::import($defaultTheme . 'gante_styles/css/screen.css', 2.3);
 css::import($defaultTheme . 'gante_styles/css/gantti.css', 2.3);
