@@ -36,10 +36,13 @@ class html
      * 返回区域
      */
     public static function IPwhere($ip){
-
-        $result=strpos($ip,'10.43');
-        $result2=strpos($ip,'10.100');
+        //公司有线网络区间
+        $result=strpos($ip,'192.168');
+        //公司wifi区间
+        $result2=strpos($ip,'192.168');
+        //vpn区间
         $result3=strpos($ip,'192.168');
+        //本地区间
         $result4=strpos($ip,'127.0');
 
         if($result!==false){

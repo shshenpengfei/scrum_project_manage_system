@@ -162,10 +162,10 @@ $lang->bug->severityList[2] = '2';
 $lang->bug->severityList[4] = '4';
 
 $lang->bug->priList[0] = '';
-$lang->bug->priList[3] = '3';
-$lang->bug->priList[1] = '1';
-$lang->bug->priList[2] = '2';
-$lang->bug->priList[4] = '4';
+$lang->bug->priList[3] = '中等';
+$lang->bug->priList[1] = '紧急';
+$lang->bug->priList[2] = '较高';
+$lang->bug->priList[4] = '较低';
 
 $lang->bug->osList['']        = '';
 $lang->bug->osList['all']     = '全部';
