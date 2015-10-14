@@ -1,8 +1,8 @@
 <?php
 $config->story->batchCreate = 10;
-$config->story->create->requiredFields = 'plan,title,estimate,releasedDate,assignedTo';
-$config->story->edit->requiredFields   = 'plan,title,estimate,releasedDate,assignedTo';
-$config->story->change->requiredFields = 'plan,title,estimate,releasedDate,assignedTo';
+$config->story->create->requiredFields = 'plan,title,releasedDate,assignedTo';
+$config->story->edit->requiredFields   = 'plan,title,releasedDate,assignedTo';
+$config->story->change->requiredFields = 'plan,title,releasedDate,assignedTo';
 $config->story->close->requiredFields  = 'closedReason';
 $config->story->review->requiredFields = 'assignedTo,reviewedBy,result';
 

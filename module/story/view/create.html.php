@@ -89,7 +89,7 @@
         link = createLink('story', 'ajaxGetFlagOfBacklog', 'planID=' + $(this).val());
         $.get(link, function (flag) {
             if (flag == 'forbidden') {
-                alert("该积压计划中存在过多的需求数量，无法加入。请和项目经理讨论进行需求迁移");
+                alert("该积压计划中存在过多的需求数量，无法加入。请和项目经理讨论进行需求迁移到当前开发计划中");
                 $("#plan").val("");
             }
         });
