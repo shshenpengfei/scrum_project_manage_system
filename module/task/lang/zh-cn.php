@@ -95,9 +95,11 @@ $lang->task->statusList['cancel']  = '已取消';
 $lang->task->statusList['closed']  = '已关闭';
 
 $lang->task->typeList['']        = '';
-$lang->task->typeList['design']  = '设计';
+$lang->task->typeList['design']  = 'UI设计';
+$lang->task->typeList['dba']  = '数据库设计';
 $lang->task->typeList['devel']   = '开发';
 $lang->task->typeList['test']    = '测试';
+$lang->task->typeList['yunwei']      = '运维部署';
 $lang->task->typeList['study']   = '研究';
 $lang->task->typeList['discuss'] = '讨论';
 $lang->task->typeList['ui']      = '界面';
