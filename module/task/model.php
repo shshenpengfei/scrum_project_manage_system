@@ -42,7 +42,6 @@ class taskModel extends model
                 ->get();
 
             if($assignedTo) $task->assignedDate = helper::now();
-
             $this->setStatus($task);
 
             $this->dao->insert(TABLE_TASK)->data($task)

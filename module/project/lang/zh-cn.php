@@ -165,7 +165,7 @@ $lang->project->accessDenied          = '您无权访问该项目！';
 $lang->project->tips                  = '提示';
 $lang->project->afterInfo             = '项目添加成功，您现在可以进行以下操作：';
 $lang->project->setTeam               = '设置团队';
-$lang->project->linkStory             = '关联需求';
+$lang->project->linkStory             = '<span style="color: #ff0000">关联需求准备开发å</span>';
 $lang->project->createTask            = '添加任务';
 $lang->project->goback                = '返回项目首页（5秒后将自动跳转）';
 

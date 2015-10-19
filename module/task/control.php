@@ -40,7 +40,6 @@ class task extends control
         $storyLink = $this->session->storyList ? $this->session->storyList : $this->createLink('project', 'story', "projectID=$projectID");
         $this->view->users    = $this->loadModel('user')->getPairs('noletter');
         $story   = $this->story->getById($storyID);
-
         /* Set menu. */
         $this->project->setMenu($this->project->getPairs(), $project->id);
 
@@ -449,7 +448,6 @@ class task extends control
     public function start($taskID)
     {
         $this->commonAction($taskID);
-
         if(!empty($_POST))
         {
             $this->loadModel('action');
@@ -480,6 +478,23 @@ class task extends control
     public function finish($taskID)
     {
         $this->commonAction($taskID);
+        $taskinfo=$this->loadModel('task')->getByID($taskID);
+        //如果实际开始时间不为默认空值（如00-00），则进行持续时间的处理。
+        if($taskinfo->realStarted !== "0000-00-00 00:00:00"){
+            $usedtime=$taskinfo->consumed;
+            $his=date('H:i:s',strtotime($taskinfo->realStarted));
+            //当时间值默认没有时分秒的时候，不去自动计算上次开始到现在的持续时间。
+            if($his == "00:00:00"){
+                $continuetime=0;
+            }
+            else{
+                $continuetime=number_format((time()-strtotime($taskinfo->realStarted))/60/60,2);
+            }
+        }
+        else {
+            $continuetime=0;
+        }
+        
 
         if(!empty($_POST))
         {
@@ -512,6 +527,7 @@ class task extends control
 
         $this->view->header->title = $this->view->project->name . $this->lang->colon .$this->lang->task->finish;
         $this->view->position[]    = $this->lang->task->finish;
+        $this->view->continuetime = $continuetime;
         $this->view->date            = strftime("%Y-%m-%d %X", strtotime('now'));
        
         $this->display();
