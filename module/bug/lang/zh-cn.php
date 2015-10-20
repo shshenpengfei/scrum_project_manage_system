@@ -156,10 +156,10 @@ $lang->bug->tplResult = "<p>[结果]</p>";
 $lang->bug->tplExpect = "<p>[期望]</p>";
 
 /* 各个字段取值列表。*/
-$lang->bug->severityList[3] = '3';
-$lang->bug->severityList[1] = '1';
-$lang->bug->severityList[2] = '2';
-$lang->bug->severityList[4] = '4';
+$lang->bug->severityList[3] = '中等';
+$lang->bug->severityList[1] = '紧急';
+$lang->bug->severityList[2] = '较高';
+$lang->bug->severityList[4] = '较低';
 
 $lang->bug->priList[0] = '';
 $lang->bug->priList[3] = '中等';

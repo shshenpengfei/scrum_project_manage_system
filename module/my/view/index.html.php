@@ -23,7 +23,9 @@
 <table class='cont' id='row2'>
     <tr valign='top'>
         <td width='33%' style='padding-right:20px'><?php include './blockstorys.html.php';?></td>
-        <td width='66%'></td>
+        <td width='33%' style='padding-right:20px'><?php include './blocktesttasks.html.php';?></td>
+        <td width='33%' style='padding-right:20px'></td>
+        </td>
     </tr>
 </table>
 <table class='cont' id='row1'>

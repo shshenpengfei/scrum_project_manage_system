@@ -49,6 +49,8 @@ class my extends control
         $this->view->actions       = $this->loadModel('action')->getDynamic('all', 'all', 'date_desc', $pager,'all','all',0);
         $this->view->todos         = $this->loadModel('todo')->getList('all', $account, 'wait, doing', $this->config->my->todoCounts);
         $this->view->tasks         = $this->loadModel('task')->getUserTasks($account, 'assignedTo', $this->config->my->taskCounts);
+        $mytesttask = $this->loadModel('testtask')->getByUser($account);
+        $this->view->testtasks         = $mytesttask;
         $this->view->storys         = $storyinfo;
         $this->view->bugs          = $this->loadModel('bug')->getUserBugPairs($account, false, $this->config->my->bugCounts);
         $this->view->users         = $this->loadModel('user')->getPairs('noletter|withguest');
