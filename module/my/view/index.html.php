@@ -20,6 +20,12 @@
         <td width='33%'><?php include './blockbugs.html.php';?></td>
     </tr>
 </table>
+<table class='cont' id='row2'>
+    <tr valign='top'>
+        <td width='33%' style='padding-right:20px'><?php include './blockstorys.html.php';?></td>
+        <td width='66%'></td>
+    </tr>
+</table>
 <table class='cont' id='row1'>
     <tr valign='top' style="height: 500px">
         <td width='100%'>

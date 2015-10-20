@@ -42,12 +42,14 @@ class my extends control
         /* Set the dynamic pager. */
         $this->app->loadClass('pager', true);
         $pager = new pager(0, $this->config->my->dynamicCounts);
-
+        
+        $storyinfo = $this->loadModel('story')->getUserStories($account, 'assignedTo', $this->config->my->storyCounts);
         $this->view->projectStats  = $projectStats;
         $this->view->productStats  = $productStats;
         $this->view->actions       = $this->loadModel('action')->getDynamic('all', 'all', 'date_desc', $pager,'all','all',0);
         $this->view->todos         = $this->loadModel('todo')->getList('all', $account, 'wait, doing', $this->config->my->todoCounts);
         $this->view->tasks         = $this->loadModel('task')->getUserTasks($account, 'assignedTo', $this->config->my->taskCounts);
+        $this->view->storys         = $storyinfo;
         $this->view->bugs          = $this->loadModel('bug')->getUserBugPairs($account, false, $this->config->my->bugCounts);
         $this->view->users         = $this->loadModel('user')->getPairs('noletter|withguest');
         $this->view->header->title = $this->lang->my->common;
