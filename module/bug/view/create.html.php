@@ -81,6 +81,7 @@ userList = "<?php echo join(',', array_keys($users));?>".split(',');
       <td>
         <?php echo html::select('os', $lang->bug->osList, $os, 'class=select-2');?>
         <?php echo html::select('browser', $lang->bug->browserList, $browser, 'class=select-2');?>
+        <?php echo html::select('mobiletype', $lang->bug->mobileTypeList, $mobiletype, 'class=select-2');?>
       </td>
     </tr>
     <tr>

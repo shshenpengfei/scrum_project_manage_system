@@ -66,7 +66,7 @@
                 text: '项目 任务延期展示图'
             },
             subtitle: {
-                text: 'Source: tonglukuaijian.com'
+                text: 'Source: wochacha.cn'
             },
             xAxis: {
                 categories: <?=json_encode($charData['category'])?>
