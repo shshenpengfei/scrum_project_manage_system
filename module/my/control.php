@@ -466,7 +466,7 @@ class my extends control
             $assignedTo = implode(",",$post->assignedTo);
             $team = $user_info->position == 'leader' ? '组' : '';
             $mailto = $post->mailto;
-            $subject = '推广中心'.$user_info->realname.$team.$begin.'至'.$end.'周报';
+            $subject = $user_info->realname.$team.$begin.'至'.$end.'周报';
             /* Send emails. */
             $this->loadModel('mail')->setReplyTo($user_info->email,$user_info->realname);
             $this->loadModel('mail')->send($assignedTo, $subject, $mailContent, $mailto,true,$user_info->realname);
@@ -484,9 +484,9 @@ class my extends control
         }
 
         //unset($members[$me]);
-        if($user_info->position != 'engineer'){
-            $members = array_merge($members,array('zhengshufa'=>'zhengshufa'));
-        }
+        //if($user_info->position != 'engineer'){
+        //    $members = array_merge($members,array('eric_shen'=>'eric_shen'));
+        //}
 
         $this->view->members  = $members;
         $mailContent = $this->fetch('task', 'reportweekly', array($me,$begin, $end, $begin_next, $end_next));

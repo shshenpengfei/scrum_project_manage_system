@@ -1123,7 +1123,8 @@ class task extends control
         $todo_guys = array();
         $plan_guys = array();
         $user_info = $this->loadModel('user')->getById($account);
-        if($user_info->position == 'leader' || $user_info->position == 'director'){
+        if($user_info->realname == 'director' || $user_info->realname == 'vp' ){
+        //if($user_info->position == 'leader' || $user_info->position == 'director'){
             $childDeptIds = $this->loadModel('dept')->getAllChildID($user_info->dept);
             $guys = array();
             $guys_list = $this->dept->getUsers($childDeptIds);

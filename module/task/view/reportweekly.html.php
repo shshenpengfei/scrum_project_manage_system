@@ -5,12 +5,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body >
-<p style="color: #3668d9;font-size: 30px;text-align: center;">推广中心<b style="color: #ff3600"><?=$user_info->realname;?></b>
+<p style="color: #3668d9;font-size: 30px;text-align: center;"><b style="color: #ff3600"><?=$user_info->realname;?></b>
     <?=$user_info->position == 'leader' ? '组' : '';?><?=$begin?>至<?=$end?>周报</p>
 <br/>
 <p><b style="background-color: #A4BED4">本周<b style="color: #ff3600">已完成TASK</b>详情如下：</b></p>
 <table style="border:1px #000 solid;border-collapse:collapse;" cellpadding="0" cellspacing="0" border="1">
-    <tr style="background: #f08300;color:#fff">
+    <tr style="background:green;color:#fff">
         <th>产品线</th>
         <th>项目</th>
         <th>任务编号</th>
@@ -56,7 +56,7 @@
 <br/>
 <p><b style="background-color: #A4BED4">本周<b style="color: #ff3600">未完成TASK</b>详情如下：</b></p>
 <table style="border:1px #000 solid;border-collapse:collapse;" cellpadding="0" cellspacing="0" border="1">
-    <tr style="background: #f08300;color:#fff">
+    <tr style="background:green;color:#fff">
         <th>产品线</th>
         <th>项目</th>
         <th>任务编号</th>
@@ -102,7 +102,7 @@
 <br/>
 <p><b style="background-color: #A4BED4">本周<b style="color: #ff3600">解决并关闭的BUG</b>详情如下：</b></p>
 <table style="border:1px #000 solid;border-collapse:collapse;" cellpadding="0" cellspacing="0" border="1">
-    <tr style="background: #f08300;color:#fff">
+    <tr style="background:green;color:#fff">
         <th>产品线</th>
         <th>项目</th>
         <th>BUG编号</th>
@@ -142,7 +142,7 @@
 <br/>
 <p><b style="background-color: #A4BED4">本周<b style="color: #ff3600">未关闭的BUG</b>详情如下：</b></p>
 <table style="border:1px #000 solid;border-collapse:collapse;" cellpadding="0" cellspacing="0" border="1">
-    <tr style="background: #f08300;color:#fff">
+    <tr style="background:green;color:#fff">
         <th>产品线</th>
         <th>项目</th>
         <th>BUG编号</th>
@@ -183,11 +183,11 @@
     <?php }?>
 </table>
 <br/>
-<p><b style="background-color: #A4BED4">本周禅道更新<b style="color: #ff3600">TODO</b>详情如下：</b></p>
+<p><b style="background-color: #A4BED4">本周禅道更新<b style="color: #ff3600">事项</b>详情如下：</b></p>
 <table style="border:1px #000 solid;border-collapse:collapse;" cellpadding="0" cellspacing="0" border="1">
-    <tr style="background: #f08300;color:#fff">
+    <tr style="background:green;color:#fff">
         <th>TODO编号</th>
-        <th><p style="width: 250px;">TODO名称</p></th>
+        <th><p style="width: 250px;">事项名称</p></th>
         <th>状态</th>
         <th>提出时间</th>
         <th>由谁提出</th>
@@ -217,9 +217,9 @@
     <?php }?>
 </table>
 <br/>
-<p><b style="background-color: #A4BED4"><b style="color: #ff3600">下周PLAN</b>详情如下：</b></p>
+<p><b style="background-color: #A4BED4"><b style="color: #ff3600">下周计划</b>详情如下：</b></p>
 <table style="border:1px #000 solid;border-collapse:collapse;" cellpadding="0" cellspacing="0" border="1">
-    <tr style="background: #f08300;color:#fff">
+    <tr style="background:green;color:#fff">
         <th>PLAN编号</th>
         <th><p style="width: 250px;">PLAN名称</p></th>
         <th>状态</th>

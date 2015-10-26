@@ -100,6 +100,7 @@ class report extends control
     public function workload()
     {
         $this->view->header->title = $this->lang->report->workload;
+        $workload = $this->report->getWorkload();
         $this->view->workload      = $this->report->getWorkload();
         $this->view->users         = $this->loadModel('user')->getPairs('noletter|noclosed');
         $this->view->submenu       = 'staff';

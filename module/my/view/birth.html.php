@@ -31,21 +31,20 @@
 </script>
 <form method='post' enctype='multipart/form-data' target='hiddenwin' id='dataform'>
     <table align='center' class='table-1 a-left'>
-        <tr>
+        <tr style="display: none">
             <th class='rowhead'>发送给</th>
             <td><?php echo html::checkbox('assignedTo', $members, implode(",",array_keys($members)));?></td>
         </tr>
 
-        <tr>
+        <tr  style="display: none">
             <th class='rowhead'><?php echo $lang->task->mailto;?></th>
             <td> <?php echo html::input('mailto', '', 'class=text-1');?> </td>
         </tr>
 
         <tr>
-            <th class='rowhead'>报表内容</th>
             <td><?php echo $mailContent;?></td>
         </tr>
-        <tr>
+        <tr style="display:none">
             <td colspan='2' class='a-center'><input type="submit" id="submit" value="发送" onclick="return yesno()" class="button-s"></td>
         </tr>
     </table>
