@@ -57,9 +57,17 @@
       <td><?php echo html::input('estimate', $estimate, "class='text-3'") . $lang->story->hour;?></td>
     </tr>
       <tr>
+          <th class='rowhead'><?php echo $lang->story->devFinishdDate;?></th>
+          <td><?php echo html::input('devFinishdDate', '', "class='text-3 date'");?></td>
+      </tr>
+      <tr>
+          <th class='rowhead'><?php echo $lang->story->testFinishdDate;?></th>
+          <td><?php echo html::input('testFinishdDate', '', "class='text-3 date'");?></td>
+      </tr>
+      <tr>
           <th class='rowhead'><?php echo $lang->story->releasedDate;?></th>
           <td><?php echo html::input('releasedDate', '', "class='text-3 date'");?></td>
-      </tr>
+      </tr>            
     <tr>
       <th class='rowhead'><?php echo $lang->story->reviewedBy;?></th>
       <td><?php echo html::select('assignedTo', $users, '', 'class=select-3');?></td>

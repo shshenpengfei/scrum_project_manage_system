@@ -28,7 +28,7 @@ $lang->story->bugs        = "Bug";
 $lang->story->linkStory   = '关联需求';
 $lang->story->export      = "导出";
 $lang->story->reportChart = "统计报表";
-$lang->story->value = "需求贡献值";
+$lang->story->value = "贡献值";
 
 $lang->story->common         = '需求';
 $lang->story->id             = '编号';
@@ -75,7 +75,9 @@ $lang->story->reviewResult   = '评审结果';
 $lang->story->preVersion     = '之前版本';
 $lang->story->keywords       = '关键词';
 $lang->story->newStory       = '继续添加需求';
-$lang->story->releasedDate       = '期望上线时间';
+$lang->story->devFinishdDate       = '期望研发完毕';
+$lang->story->testFinishdDate       = '期望测试完毕';
+$lang->story->releasedDate       = '期望上线';
 
 $lang->story->same = '同上';
 

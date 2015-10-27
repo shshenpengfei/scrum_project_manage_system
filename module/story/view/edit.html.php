@@ -78,7 +78,15 @@
             <td class='rowhead'><?php echo $lang->story->estimate;?></td>
             <td><?php echo html::input('estimate', $story->estimate, "class='text-1'");?></td>
           </tr>
-            <tr>
+          <tr>
+                <th class='rowhead'><?php echo $lang->story->devFinishdDate;?></th>
+                <td><?php echo html::input('devFinishdDate', $story->devFinishdDate, "class='text-1 date'");?></td>
+          </tr>
+          <tr>
+                <th class='rowhead'><?php echo $lang->story->testFinishdDate;?></th>
+                <td><?php echo html::input('testFinishdDate', $story->testFinishdDate, "class='text-1 date'");?></td>
+          </tr>
+          <tr>
                 <th class='rowhead'><?php echo $lang->story->releasedDate;?></th>
                 <td><?php echo html::input('releasedDate', $story->releasedDate, "class='text-1 date'");?></td>
             </tr>

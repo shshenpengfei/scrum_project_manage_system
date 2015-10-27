@@ -139,7 +139,7 @@ $lang->my->menu = new stdClass();
 $lang->my->menu->account        = '<span id="mybg">&nbsp;</span>%s' . $lang->arrow;
 $lang->my->menu->index          = '首页|my|index';
 $lang->my->menu->todo           = array('link' => '我的事项|my|todo|', 'subModule' => 'todo');
-$lang->my->menu->myplan           = '我的计划|my|plan|';
+$lang->my->menu->myplan           = '我的下周计划|my|plan|';
 $lang->my->menu->task           = '我的任务|my|task|';
 $lang->my->menu->bug            = '我的Bug|my|bug|';
 $lang->my->menu->testtask       = '我的测试|my|testtask|';
