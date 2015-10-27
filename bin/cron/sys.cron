@@ -1,0 +1,7 @@
+# system cron.
+#min   hour day month week  command.
+0      1    *   *     *     /Users/shenpengfei/git_repository/pm_wcc/scrum_project_manage_system/bin/dailyreminder.sh   # dailyreminder.
+1      1    *   *     *     /Users/shenpengfei/git_repository/pm_wcc/scrum_project_manage_system/bin/backup.sh          # backup database and file.
+1      23   *   *     *     /Users/shenpengfei/git_repository/pm_wcc/scrum_project_manage_system/bin/computeburn.sh     # compute burndown chart.
+1-59/2 *    *   *     *     /Users/shenpengfei/git_repository/pm_wcc/scrum_project_manage_system/bin/syncsvn.sh         # sync subversion.
+1-59/2 *    *   *     *     /Users/shenpengfei/git_repository/pm_wcc/scrum_project_manage_system/bin/syncgit.sh         # sync git

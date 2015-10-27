@@ -18,7 +18,7 @@ $config->git->encodings = 'utf-8, gbk';
 $config->git->client    = '/usr/bin/git';
 
 $i = 1;
-$config->git->repos[$i]['path'] = 'git@github.com:shshenpengfei/scrum_project_manage_system.git';
+$config->git->repos[$i]['path'] = '/Users/shenpengfei/git_repository/pm_wcc/scrum_project_manage_system/.git';
 
 /*
 $i ++;
