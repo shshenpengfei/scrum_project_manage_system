@@ -76,6 +76,7 @@ $lang->action->desc->frombug      = '$date, 由 <strong>$actor</strong> Bug转�
 $lang->action->desc->started      = '$date, 由 <strong>$actor</strong> 启动。' . "\n";
 $lang->action->desc->canceled     = '$date, 由 <strong>$actor</strong> 取消。' . "\n";
 $lang->action->desc->svncommited  = '$date, 由 <strong>$actor</strong> 提交代码，版本为<strong>#$extra</strong>。' . "\n";
+$lang->action->desc->gitcommited    = '$date, 由 <strong>$actor</strong> 提交代码，版本为<strong>#$extra</strong>。' . "\n";
 $lang->action->desc->finished     = '$date, 由 <strong>$actor</strong> 完成。' . "\n";
 $lang->action->desc->diff1        = '修改了 <strong><i>%s</i></strong>，旧值为 "%s"，新值为 "%s"。<br />' . "\n";
 $lang->action->desc->diff2        = '修改了 <strong><i>%s</i></strong>，区别为：' . "\n" . '<blockquote>%s</blockquote>' . "\n";
