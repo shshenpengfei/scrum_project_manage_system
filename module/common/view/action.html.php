@@ -50,7 +50,7 @@ function switchChange(historyID,type)
       </span>
       <?php if(!empty($action->comment) or !empty($action->history)):?>
       <?php if(!empty($action->comment)) echo "<div class='history'>";?>
-        <div class='changes hidden' id='changeBox<?php echo $i;?>'>
+        <div class='changes hidden alert' id='changeBox<?php echo $i;?>'>
         <?php echo $this->action->printChanges($action->objectType, $action->history);?>
         </div>
         <?php if($action->comment) echo nl2br($action->comment);?>
