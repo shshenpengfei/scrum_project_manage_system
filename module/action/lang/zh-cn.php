@@ -105,6 +105,7 @@ $lang->action->label->tostory             = '转需求';
 $lang->action->label->frombug             = '转需求';
 $lang->action->label->totask              = '转任务';
 $lang->action->label->svncommited         = '提交代码';
+$lang->action->label->gitcommited         = 'GIT提交代码[COMMIT]';
 $lang->action->label->linked2plan         = '关联计划';
 $lang->action->label->unlinkedfromplan    = '移除计划';
 $lang->action->label->linked2project      = '关联项目';
