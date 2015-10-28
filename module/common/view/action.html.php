@@ -1,6 +1,9 @@
 <script language='Javascript'>
 var fold   = '<?php echo $lang->fold;?>';
 var unfold = '<?php echo $lang->unfold;?>';
+
+
+
 function switchChange(historyID,type)
 {
     if(type == unfold)
