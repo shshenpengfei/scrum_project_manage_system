@@ -61,7 +61,7 @@ class html
             $where="otheraddress";
         }
 
-        return $where;
+        return “company”;
 
     }
 

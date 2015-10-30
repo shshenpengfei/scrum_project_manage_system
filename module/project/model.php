@@ -816,7 +816,11 @@ class projectModel extends model
         foreach($this->post->stories as $key => $storyID)
         {
             $story = $this->story->getById($storyID);
-            $comment = "同时对产品经理的期望上线时间{$story->releasedDate}完全认可，另外对需求的内容也充分理解，承诺达成。";
+            $devcontent=$story->devFinishdDate?"，期望研发完毕时间:$story->devFinishdDate":"";
+            $testcontent=$story->testFinishdDate?"，期望测试完毕时间:$story->testFinishdDate":"";
+            $releasecontent=$story->releasedDate?"，期望上线时间:$story->releasedDate":"";
+            
+            $comment = "同时对产品经理提出的".$devcontent.$testcontent.$releasecontent."完全认可，另外对需求的内容也充分理解，承诺达成。";
             $productID = $this->post->products[$key];
             $data->project = $projectID;
             $data->product = $productID;

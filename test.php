@@ -1,3 +1,2 @@
 <?php
-echo "12345hwg";
-//phpinfo();
+echo phpinfo();

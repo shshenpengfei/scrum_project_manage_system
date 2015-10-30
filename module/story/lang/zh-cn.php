@@ -28,7 +28,7 @@ $lang->story->bugs        = "Bug";
 $lang->story->linkStory   = '关联需求';
 $lang->story->export      = "导出";
 $lang->story->reportChart = "统计报表";
-$lang->story->value = "需求贡献值";
+$lang->story->value = "贡献值";
 
 $lang->story->common         = '需求';
 $lang->story->id             = '编号';
@@ -75,7 +75,9 @@ $lang->story->reviewResult   = '评审结果';
 $lang->story->preVersion     = '之前版本';
 $lang->story->keywords       = '关键词';
 $lang->story->newStory       = '继续添加需求';
-$lang->story->releasedDate       = '期望上线时间';
+$lang->story->devFinishdDate       = '期望研发完毕';
+$lang->story->testFinishdDate       = '期望测试完毕';
+$lang->story->releasedDate       = '期望上线';
 
 $lang->story->same = '同上';
 
@@ -119,19 +121,18 @@ $lang->story->reviewList[0] = '否';
 $lang->story->reviewList[1] = '是';
 
 $lang->story->sourceList['']           = '';
-$lang->story->sourceList['TD']        = '部门总监';
-$lang->story->sourceList['kaifa']        = '开发团队';
-$lang->story->sourceList['chanpin']        = '产品组';
-$lang->story->sourceList['tuiguang']        = '推广组';
-$lang->story->sourceList['bianji']        = '编辑组';
-$lang->story->sourceList['kefu']        = '客服组';
-$lang->story->sourceList['yingxiao']        = '营销团队';
-$lang->story->sourceList['gongsi']        = '公司';
+$lang->story->sourceList['kaifa']        = '移动研发中心';
+$lang->story->sourceList['chanpin']        = '数据中心';
+$lang->story->sourceList['tuiguang']        = '市场&策划部';
+$lang->story->sourceList['bianji']        = '条码应用中心';
+$lang->story->sourceList['kefu']        = '商务拓展中心';
+$lang->story->sourceList['yingxiao']        = '资源服务中心';
 $lang->story->sourceList['bug']        = 'Bug';
+$lang->story->sourceList['gongsi']        = '老板';
 $lang->story->sourceList['customer']   = '客户';
-$lang->story->sourceList['user']       = '用户';
-$lang->story->sourceList['market']     = '市场';
-$lang->story->sourceList['service']    = '客服';
+$lang->story->sourceList['user']       = 'APP用户';
+$lang->story->sourceList['market']     = '市场反馈';
+$lang->story->sourceList['service']    = '客服反馈';
 $lang->story->sourceList['competitor'] = '竞争对手';
 $lang->story->sourceList['partner']    = '合作伙伴';
 $lang->story->sourceList['dev']        = '开发人员';
@@ -141,10 +142,10 @@ $lang->story->sourceList['other']      = '其他';
 
 
 $lang->story->priList[]   = '';
-$lang->story->priList[3]  = '3';
-$lang->story->priList[1]  = '1';
-$lang->story->priList[2]  = '2';
-$lang->story->priList[4]  = '4';
+$lang->story->priList[3]  = '中等';
+$lang->story->priList[1]  = '紧急';
+$lang->story->priList[2]  = '较高';
+$lang->story->priList[4]  = '较低';
 
 $lang->story->legendBasicInfo      = '基本信息';
 $lang->story->legendLifeTime       = '需求的一生';

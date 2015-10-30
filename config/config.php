@@ -12,6 +12,7 @@
  * @link        http://www.zentao.net
  */
 /* Basic settings. */
+$config=new stdClass();
 $config->version     = '3.2.1';             // The version of zentaopms. Don't change it.
 $config->encoding    = 'UTF-8';           // The encoding of zentaopms.
 $config->cookieLife  = time() + 2592000;  // The cookie life time.
@@ -80,7 +81,7 @@ foreach($extConfigFiles as $extConfigFile) include $extConfigFile;
 /* Set default table prefix. */
 if(!isset($config->db->prefix)) $config->db->prefix = 'zt_';
 
-define('PM_SITE','http://pm.wochacha.cn');
+define('PM_SITE','http://www.pm-wcc.com/');
 
 /* Define the tables. */
 define('TABLE_COMPANY',       '`' . $config->db->prefix . 'company`');

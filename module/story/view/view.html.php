@@ -174,6 +174,15 @@ echo $gantti;
             <td><?php echo $story->estimate;?></td>
           </tr>
             <tr>
+                <td class='rowhead'><?php echo $lang->story->devFinishdDate;?></td>
+                <td><?php echo $story->devFinishdDate;?></td>
+            </tr>
+            <tr>
+                <td class='rowhead'><?php echo $lang->story->testFinishdDate;?></td>
+                <td><?php echo $story->testFinishdDate;?></td>
+            </tr>
+            
+            <tr>
                 <td class='rowhead'><?php echo $lang->story->releasedDate;?></td>
                 <td><?php echo $story->releasedDate;?></td>
             </tr>

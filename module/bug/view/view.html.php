@@ -130,6 +130,10 @@
             <td><?php echo $lang->bug->browserList[$bug->browser];?></td>
           </tr>
           <tr>
+            <td class='rowhead'><?php echo $lang->bug->mobiletype;?></td>
+            <td><?php echo $lang->bug->mobileTypeList[$bug->mobiletype];?></td>
+          </tr>
+          <tr>
             <td class='rowhead'><?php echo $lang->bug->keywords;?></td>
             <td><?php echo $bug->keywords;?></td>
           </tr>

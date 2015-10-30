@@ -139,7 +139,7 @@ $lang->my->menu = new stdClass();
 $lang->my->menu->account        = '<span id="mybg">&nbsp;</span>%s' . $lang->arrow;
 $lang->my->menu->index          = '首页|my|index';
 $lang->my->menu->todo           = array('link' => '我的事项|my|todo|', 'subModule' => 'todo');
-$lang->my->menu->myplan           = '我的计划|my|plan|';
+$lang->my->menu->myplan           = '我的下周计划|my|plan|';
 $lang->my->menu->task           = '我的任务|my|task|';
 $lang->my->menu->bug            = '我的Bug|my|bug|';
 $lang->my->menu->testtask       = '我的测试|my|testtask|';
@@ -361,10 +361,10 @@ $lang->pager->last      = "末页";
 $lang->pager->locate    = "GO!";
 
 $lang->zentaoSite     = "官方网站";
-$lang->chinaScrum     = "<a href='http://www.zentao.net/goto.php?item=chinascrum' target='_blank'>Scrum社区</a> ";
-$lang->agileTraining  = "<a href='http://www.zentao.net/goto.php?item=agiletrain' target='_blank'>培训</a> ";
-$lang->donate         = "<a href='http://www.zentao.net/goto.php?item=donate' target='_blank'>捐赠</a> ";
-$lang->proVersion     = "<a href='http://www.zentao.net/goto.php?item=proversion&from=footer' target='_blank' class='red'>购买专业版(特惠)！</a> ";
+$lang->chinaScrum     = " ";
+$lang->agileTraining  = "";
+$lang->donate         = "";
+$lang->proVersion     = "";
 
 $lang->suhosinInfo = "警告：数据太多，请在php.ini中修改<font color=red>sohusin.post.max_vars</font>和<font color=red>sohusin.request.max_vars</font>（设置更大的数）。 保存并重新启动apache，否则会造成部分数据无法保存。";
 

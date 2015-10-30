@@ -16,7 +16,7 @@
     <caption><?php echo $task->name;?></caption>
     <tr>
       <th class='rowhead'><?php echo $lang->task->consumed;?></th>
-      <td><?php echo html::input('consumed', $task->consumed, "class='text-3'") . $lang->task->hour;?></td>
+      <td><?php echo html::input('consumed', $task->consumed+$this->view->continuetime, "class='text-3'") . $lang->task->hour;?>(<?php echo "上次已消耗". $task->consumed."小时"; ?>,<?php echo "自上次到现在再次消耗".$this->view->continuetime."小时"; ?>)</td>
     </tr>
     <tr>
       <td class='rowhead'><?php echo $lang->task->finishedDate;?></td>

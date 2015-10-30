@@ -115,6 +115,11 @@ userList               = "<?php echo join(',', array_keys($users));?>".split(','
             <td><?php echo html::select('browser', $lang->bug->browserList, $bug->browser, 'class=select-3');?></td>
           </tr>
           <tr>
+            <td class='rowhead'><?php echo $lang->bug->mobiletype;?></td>
+            <td><?php echo html::select('mobiletype', $lang->bug->mobileTypeList, $bug->mobiletype, 'class=select-3');?>
+            </td>
+          </tr>
+          <tr>
             <td class='rowhead'><?php echo $lang->bug->keywords;?></td>
             <td><?php echo html::input('keywords', $bug->keywords, 'class="text-3"');?></td>
           </tr>

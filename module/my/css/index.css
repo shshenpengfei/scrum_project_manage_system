@@ -1,6 +1,6 @@
-.block {border:1px solid #efefef; height:225px;}
+.block {border:1px solid #efefef; height:100px;}
 .linkbox1{height:180px; overflow-y:auto}
-.linkbox2{height:225px; overflow-y:auto}
+.linkbox2{height:80px; overflow-y:auto}
 
 #row1{margin-bottom:20px}
 #row2{margin-bottom:10px}

@@ -57,9 +57,17 @@
       <td><?php echo html::input('estimate', $estimate, "class='text-3'") . $lang->story->hour;?></td>
     </tr>
       <tr>
+          <th class='rowhead'><?php echo $lang->story->devFinishdDate;?></th>
+          <td><?php echo html::input('devFinishdDate', '', "class='text-3 date'");?></td>
+      </tr>
+      <tr>
+          <th class='rowhead'><?php echo $lang->story->testFinishdDate;?></th>
+          <td><?php echo html::input('testFinishdDate', '', "class='text-3 date'");?></td>
+      </tr>
+      <tr>
           <th class='rowhead'><?php echo $lang->story->releasedDate;?></th>
           <td><?php echo html::input('releasedDate', '', "class='text-3 date'");?></td>
-      </tr>
+      </tr>            
     <tr>
       <th class='rowhead'><?php echo $lang->story->reviewedBy;?></th>
       <td><?php echo html::select('assignedTo', $users, '', 'class=select-3');?></td>
@@ -89,7 +97,7 @@
         link = createLink('story', 'ajaxGetFlagOfBacklog', 'planID=' + $(this).val());
         $.get(link, function (flag) {
             if (flag == 'forbidden') {
-                alert("该积压计划中存在过多的需求数量，无法加入。请和项目经理讨论进行需求迁移");
+                alert("该积压计划中存在过多的需求数量，无法加入。请和项目经理讨论进行需求迁移到当前开发计划中");
                 $("#plan").val("");
             }
         });

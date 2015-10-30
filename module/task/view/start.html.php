@@ -17,7 +17,7 @@
     <caption><?php echo $task->name;?></caption>
     <tr>
       <th class='rowhead'><?php echo $lang->task->realStarted;?></th>
-      <td><?php echo html::input('realStarted', helper::today(), "class='text-2 date'");?></td>
+      <td><?php echo html::input('realStarted', helper::now(), "class='text-2 date'");?></td>
     </tr>  
     <tr>
       <th class='rowhead'><?php echo $lang->task->consumed;?></th>
