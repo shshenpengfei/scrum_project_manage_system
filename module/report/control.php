@@ -221,7 +221,7 @@ class report extends control
      */
     public function codereview(){
         echo "<script language='javascript'>";
-        echo 'window.top.location="http://10.43.50.237:8008"';
+        echo 'window.top.location="http://codereview.wochacha.cn/"';
         echo "</script>";
     }
 
