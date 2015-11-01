@@ -10,7 +10,7 @@
             <table class='table-1 fixed colored tablesorter datatable border-sep'>
                 <thead>
                 <tr class='colhead'>
-                    <th>ID</th>
+                    <th>用户ID</th>
                     <th>所在组</th>
                     <th>姓名</th>
                     <th>任务总数</th>
@@ -28,6 +28,9 @@
 
                     <tr class="a-center" >
                         <td>
+                            <?php
+                                echo $item->id;
+                            ?>
                         </td>
 
                         <td>

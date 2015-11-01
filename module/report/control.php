@@ -121,7 +121,7 @@ class report extends control
 
     //贡献排行榜
     public function top(){
-        $userlist = $this->dao->select('realname,dept')->from(TABLE_USER)
+        $userlist = $this->dao->select('id,realname,dept')->from(TABLE_USER)
             ->where('deleted')->eq(0)
             ->orderBy('id desc')->fetchAll();
         //var_dump($userlist);
