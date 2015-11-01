@@ -131,7 +131,11 @@ class report extends control
 
             $bugnum = $this->dao->select('COUNT(*) AS bnum')->from(TABLE_BUG)
             ->where('assignedTo')->eq($uinfo->account)->fetch();
-            $userlist[$u]->bugnum=$bugnum->bnum;         
+            $userlist[$u]->bugnum=$bugnum->bnum;  
+
+            $create_bugnum = $this->dao->select('COUNT(*) AS bnum')->from(TABLE_BUG)
+            ->where('openedBy')->eq($uinfo->account)->fetch();
+            $userlist[$u]->create_bugnum=$create_bugnum->bnum;           
 
 
             $todonum = $this->dao->select('COUNT(*) AS dnum')->from(TABLE_TODO)

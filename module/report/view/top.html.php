@@ -16,6 +16,7 @@
                     <th>任务总数</th>
                     <th>事项总数</th>
                     <th>BUG总数</th>
+                    <th>提出BUG总数</th>
                     <th>GIT COMMIT总数</th>
                     <th>代码reivew情况</th>
                     <th>总投入工时</th>
@@ -63,6 +64,12 @@
                         <td>
                             <?php
                                 echo $item->bugnum;
+                            ?>
+                        </td>
+
+                        <td >
+                            <?php
+                                echo $item->create_bugnum;
                             ?>
                         </td>
 
