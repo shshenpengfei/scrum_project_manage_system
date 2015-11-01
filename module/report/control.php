@@ -121,10 +121,14 @@ class report extends control
 
     //贡献排行榜
     public function top(){
-        $userlist = $this->dao->select('id,realname,dept')->from(TABLE_USER)
+        $userlist = $this->dao->select('id,realname,dept,account')->from(TABLE_USER)
             ->where('deleted')->eq(0)
             ->orderBy('id desc')->fetchAll();
-        //var_dump($userlist);
+        foreach ($userlist as $u => $uinfo) {
+            $tasknum = $this->dao->select('COUNT(*) AS tnum')->from(TABLE_TASK)
+            ->where('assignedTo')->eq($uinfo->account)->fetch();
+            $userlist[$u]->tasknum=$tasknum->tnum;         
+        }
         $this->view->userlist         = $userlist;
         $this->view->submenu       = 'top';
         $this->display();

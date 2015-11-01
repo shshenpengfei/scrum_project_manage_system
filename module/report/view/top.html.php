@@ -49,6 +49,9 @@
 
 
                         <td>
+                            <?php
+                                echo $item->tasknum;
+                            ?>
                         </td>
 
                         <td>
