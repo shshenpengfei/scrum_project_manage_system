@@ -55,9 +55,15 @@
                         </td>
 
                         <td>
+                            <?php
+                                echo $item->todonum;
+                            ?>
                         </td>
 
                         <td>
+                            <?php
+                                echo $item->bugnum;
+                            ?>
                         </td>
 
                         <td >

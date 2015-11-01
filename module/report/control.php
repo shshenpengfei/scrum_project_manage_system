@@ -127,7 +127,16 @@ class report extends control
         foreach ($userlist as $u => $uinfo) {
             $tasknum = $this->dao->select('COUNT(*) AS tnum')->from(TABLE_TASK)
             ->where('assignedTo')->eq($uinfo->account)->fetch();
-            $userlist[$u]->tasknum=$tasknum->tnum;         
+            $userlist[$u]->tasknum=$tasknum->tnum;     
+
+            $bugnum = $this->dao->select('COUNT(*) AS bnum')->from(TABLE_BUG)
+            ->where('assignedTo')->eq($uinfo->account)->fetch();
+            $userlist[$u]->bugnum=$bugnum->bnum;         
+
+
+            $todonum = $this->dao->select('COUNT(*) AS dnum')->from(TABLE_TODO)
+            ->where('account')->eq($uinfo->account)->fetch();
+            $userlist[$u]->todonum=$todonum->dnum;  
         }
         $this->view->userlist         = $userlist;
         $this->view->submenu       = 'top';
