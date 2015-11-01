@@ -13,9 +13,12 @@
                     <th>用户ID</th>
                     <th>所在组</th>
                     <th>姓名</th>
-                    <th>任务总数</th>
+                    <th>TASK</th>
+                    <th>未完成TASK</th>
                     <th>事项总数</th>
-                    <th>BUG总数</th>
+                    <th>BUG</th>
+                    <th>未完成BUG</th>
+                    <th>提出BUG总数</th>
                     <th>GIT COMMIT总数</th>
                     <th>代码reivew情况</th>
                     <th>总投入工时</th>
@@ -55,6 +58,9 @@
                         </td>
 
                         <td>
+                        </td>
+
+                        <td>
                             <?php
                                 echo $item->todonum;
                             ?>
@@ -63,6 +69,15 @@
                         <td>
                             <?php
                                 echo $item->bugnum;
+                            ?>
+                        </td>
+
+                        <td>
+                        </td>
+
+                        <td >
+                            <?php
+                                echo $item->create_bugnum;
                             ?>
                         </td>
 
