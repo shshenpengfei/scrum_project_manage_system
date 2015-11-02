@@ -58,6 +58,9 @@
                         </td>
 
                         <td>
+                            <?php
+                                echo $item->unFinishtasknum;
+                            ?>
                         </td>
 
                         <td>
