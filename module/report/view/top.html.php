@@ -10,12 +10,15 @@
             <table class='table-1 fixed colored tablesorter datatable border-sep'>
                 <thead>
                 <tr class='colhead'>
-                    <th>ID</th>
+                    <th>用户ID</th>
                     <th>所在组</th>
                     <th>姓名</th>
-                    <th>任务总数</th>
+                    <th>TASK</th>
+                    <th>未完成TASK</th>
                     <th>事项总数</th>
-                    <th>BUG总数</th>
+                    <th>BUG</th>
+                    <th>未完成BUG</th>
+                    <th>提出BUG总数</th>
                     <th>GIT COMMIT总数</th>
                     <th>代码reivew情况</th>
                     <th>总投入工时</th>
@@ -28,6 +31,9 @@
 
                     <tr class="a-center" >
                         <td>
+                            <?php
+                                echo $item->id;
+                            ?>
                         </td>
 
                         <td>
@@ -46,12 +52,36 @@
 
 
                         <td>
+                            <?php
+                                echo $item->tasknum;
+                            ?>
+                        </td>
+
+                        <td>
+                            <?php
+                                echo $item->unFinishtasknum;
+                            ?>
+                        </td>
+
+                        <td>
+                            <?php
+                                echo $item->todonum;
+                            ?>
+                        </td>
+
+                        <td>
+                            <?php
+                                echo $item->bugnum;
+                            ?>
                         </td>
 
                         <td>
                         </td>
 
-                        <td>
+                        <td >
+                            <?php
+                                echo $item->create_bugnum;
+                            ?>
                         </td>
 
                         <td >
