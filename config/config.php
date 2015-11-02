@@ -82,6 +82,7 @@ foreach($extConfigFiles as $extConfigFile) include $extConfigFile;
 if(!isset($config->db->prefix)) $config->db->prefix = 'zt_';
 
 define('PM_SITE','http://www.pm-wcc.com/');
+define('CODEREVIEW_SITE','http://codereview.wochacha.cn');
 
 /* Define the tables. */
 define('TABLE_COMPANY',       '`' . $config->db->prefix . 'company`');
