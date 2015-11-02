@@ -19,8 +19,8 @@
                     <th>BUG</th>
                     <th>未完成BUG</th>
                     <th>提出BUG总数</th>
-                    <th>GIT COMMIT总数</th>
-                    <th>代码reivew情况</th>
+                    <th>COMMIT总数</th>
+                    <th>reivew情况</th>
                     <th>总投入工时</th>
                     <th>总贡献值</th>
 
