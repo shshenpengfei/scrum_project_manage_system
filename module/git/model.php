@@ -81,6 +81,9 @@ class gitModel extends model
      */
     public function run()
     {
+        echo $this->app->getTmpRoot();
+        exit;
+        
         $this->setRepos();
         if(empty($this->repos)) return false;
 

@@ -150,9 +150,9 @@ $lang->my->menu->profile        = array('link' => '我的档案|my|profile|', 'a
 $lang->my->menu->changePassword = '修改密码|my|changepassword|';
 $lang->my->menu->weekly = '我的周报|my|weekly|';
 $lang->my->menu->sqlreview = '我的SQL|my|sqlreview|';
-$lang->my->menu->beginwork = '<span style="color: #ff0000">开始干活</span>|my|beginwork|';
-$lang->my->menu->endwork = '<span style="color: #009900">收工休息</span>|my|endwork|';
-$lang->my->menu->myworktime = '我的工作时间|report|UserWorktime|';
+//$lang->my->menu->beginwork = '<span style="color: #ff0000">开始干活</span>|my|beginwork|';
+//$lang->my->menu->endwork = '<span style="color: #009900">收工休息</span>|my|endwork|';
+//$lang->my->menu->myworktime = '我的工作时间|report|UserWorktime|';
 $lang->my->menu->codereview = '<span style="color: #ff0000">代码评审</span>|report|codereview|';
 
 
