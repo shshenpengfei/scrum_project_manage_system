@@ -49,6 +49,19 @@ class story extends control
             {
                 $actionID = $this->action->create('story', $storyID, 'Frombug', '', $bugID);
             }
+
+
+            $userinfo    = $this->loadModel('user')->getById($_POST['assignedTo']);
+            $pragram=array(
+                'window_title'=>"我查查PMO通知",
+                'tips_title'=>"你刚被指派一则新需求",
+                'tips_url'=>PM_SITE.$this->createLink('story', 'view', "storyID=$storyID"),
+                'tips_content'=>"需求id".$storyID."\n 需求标题:".$_POST['title'],
+                'to'=>$userinfo->open_id
+            );
+
+            html::sendQqTips($pragram);
+
             $this->sendMail($storyID, $actionID);
             if($this->post->newStory)
             {
@@ -63,6 +76,9 @@ class story extends control
             {
                 die(js::locate($this->createLink('project', 'story', "projectID=$projectID"), 'parent'));
             }
+        
+
+
         }
 
         /* Set products, users and module. */
@@ -153,7 +169,9 @@ class story extends control
 
         $this->display();
     }
-    
+
+
+
     /**
      * Create a batch stories.
      * 
@@ -296,6 +314,20 @@ class story extends control
                 if(!empty($files)) $fileAction = $this->lang->addFiles . join(',', $files) . "\n" ;
                 $actionID = $this->action->create('story', $storyID, $action, $fileAction . $this->post->comment);
                 $this->action->logHistory($actionID, $changes);
+
+
+                $userinfo    = $this->loadModel('user')->getById($_POST['assignedTo']);
+                $pragram=array(
+                    'window_title'=>"我查查PMO通知",
+                    'tips_title'=>"有一个需求发生变更，需你评审",
+                    'tips_url'=>PM_SITE.$this->createLink('story', 'view', "storyID=$storyID"),
+                    'tips_content'=>"需求id".$storyID."\n 需求标题:".$_POST['title'],
+                    'to'=>$userinfo->open_id
+                );
+
+                html::sendQqTips($pragram);
+
+
                 $this->sendMail($storyID, $actionID);
             }
             die(js::locate($this->createLink('story', 'view', "storyID=$storyID"), 'parent'));
@@ -426,6 +458,19 @@ class story extends control
             if($this->post->closedReason != '' and strpos('done,postponed,subdivided', $this->post->closedReason) !== false) $result = 'pass';
             $actionID = $this->action->create('story', $storyID, 'Reviewed', $this->post->comment, ucfirst($result));
             $this->action->logHistory($actionID, array());
+
+            $tmpstory   = $this->story->getById($storyID);
+            $userinfo    = $this->loadModel('user')->getById($_POST['assignedTo']);
+            $pragram=array(
+                'window_title'=>"我查查PMO通知",
+                'tips_title'=>"有一个需求有了评审结果，请查看",
+                'tips_url'=>PM_SITE.$this->createLink('story', 'view', "storyID=$storyID"),
+                'tips_content'=>"需求id".$storyID."\n 需求标题:".$tmpstory->title,
+                'to'=>$userinfo->open_id
+            );
+            html::sendQqTips($pragram);
+
+
             $this->sendMail($storyID, $actionID);
             if($this->post->result == 'reject')
             {
