@@ -13,6 +13,7 @@
 <?php include '../../common/view/header.html.php';?>
 <?php include '../../common/view/chosen.html.php';?>
 <?php include '../../common/view/autocomplete.html.php';?>
+<?php include '../../common/view/datepicker.html.php';?>
 <?php include '../../common/view/alert.html.php';?>
 <?php include '../../common/view/kindeditor.html.php';?>
 <script language='Javascript'>
@@ -86,6 +87,10 @@ userList               = "<?php echo join(',', array_keys($users));?>".split(','
             <td class='rowhead'><?php echo $lang->bug->type;?></td>
             <td><?php echo html::select('type', $lang->bug->typeList, $bug->type, 'class=select-3');?>
           </tr>
+            <tr>
+                <td class='rowhead'><?php echo $lang->bug->deadline;?></td>
+                <td><?php echo html::input('deadline', $bug->deadline, 'class="text-2 date"');?></td>
+            </tr>
           <tr>
             <td class='rowhead'><?php echo $lang->bug->severity;?></td>
             <td><?php echo html::select('severity', $lang->bug->severityList, $bug->severity, 'class=select-3');?>

@@ -60,7 +60,7 @@
       <?php echo $this->fetch('file', 'printFiles', array('files' => $bug->files, 'fieldset' => 'true'));?>
       <?php include '../../common/view/action.html.php';?>
       <div class='a-center actionlink'><?php if(!$bug->deleted) echo $actionLinks;?></div>
-      <div id='comment' class='hidden'>
+      <div id='comment'>
         <fieldset>
           <legend><?php echo $lang->comment;?></legend>
           <form method='post' action='<?php echo inlink('edit', "bugID=$bug->id&comment=true")?>'>
@@ -97,6 +97,10 @@
             <td class='rowhead'><?php echo $lang->bug->type;?></td>
             <td><?php if(isset($lang->bug->typeList[$bug->type])) echo $lang->bug->typeList[$bug->type]; else echo $bug->type;?></td>
           </tr>
+            <tr>
+                <td class='rowhead'><?php echo $lang->bug->deadline;?></td>
+                <td><strong><?php echo $bug->deadline;?></strong></td>
+            </tr>
           <tr>
             <td class='rowhead'><?php echo $lang->bug->severity;?></td>
             <td><strong><?php echo $lang->bug->severityList[$bug->severity];?></strong></td>
