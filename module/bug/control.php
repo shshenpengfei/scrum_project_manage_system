@@ -496,6 +496,18 @@ class bug extends control
             if(dao::isError()) die(js::error(dao::getError()));
             $actionID = $this->action->create('bug', $bugID, 'Assigned', $this->post->comment, $this->post->assignedTo);
             $this->action->logHistory($actionID, $changes);
+
+            $userinfo    = $this->loadModel('user')->getById($this->post->assignedTo);
+            $pragram=array(
+                'window_title'=>"我查查PMO通知",
+                'tips_title'=>"你刚被指派一个BUG",
+                'tips_url'=>PM_SITE.$this->createLink('bug', 'view', "bugID=$bugID"),
+                'tips_content'=>"BUG id".$bugID."\n BUG标题:".$bug->title,
+                'to'=>$userinfo->open_id
+            );
+
+            html::sendQqTips($pragram);
+
             $this->sendmail($bugID, $actionID);
 
             die(js::locate($this->createLink('bug', 'view', "bugID=$bugID"), 'parent'));
@@ -555,13 +567,25 @@ class bug extends control
         $this->view->users = $this->user->getPairs('nodeleted');
         if(!empty($_POST))
         {
+            $bug = $this->bug->getById($bugID);
             $this->bug->resolve($bugID);
             if(dao::isError()) die(js::error(dao::getError()));
             $actionID = $this->action->create('bug', $bugID, 'Resolved', $this->post->comment, $this->post->resolution);
+
+            $userinfo    = $this->loadModel('user')->getById($this->post->assignedTo);
+            $pragram=array(
+                'window_title'=>"我查查PMO通知",
+                'tips_title'=>"一个BUG被解决，请验证",
+                'tips_url'=>PM_SITE.$this->createLink('bug', 'view', "bugID=$bugID"),
+                'tips_content'=>"BUG id".$bugID."\n BUG标题:".$bug->title,
+                'to'=>$userinfo->open_id
+            );
+
+            html::sendQqTips($pragram);
+
             $this->sendmail($bugID, $actionID);
 
-            $bug = $this->bug->getById($bugID);
-            if($bug->toTask != 0) 
+            if($bug->toTask != 0)
             {
                 $confirmURL = $this->createLink('task', 'view', "taskID=$bug->toTask");
                 $cancelURL  = $this->createLink('bug', 'view', "bugID=$bugID");

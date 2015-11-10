@@ -411,8 +411,9 @@ class gitModel extends model
         $subPath = substr($path, strlen($repo->path) + 1);
         $subPath = ltrim('/', $subPath);
         exec("$this->client rev-list -n 2 $revision -- $subPath", $lists);
+        //exec("$this->client difftool");
         if(count($lists) == 2) list($nowRevision, $preRevision) = $lists;
-        $cmd = "$this->client diff $preRevision $nowRevision -- $subPath";
+        $cmd = "$this->client  diff $preRevision $nowRevision -- $subPath";
         $diff = `$cmd`;
         return $diff;
     }

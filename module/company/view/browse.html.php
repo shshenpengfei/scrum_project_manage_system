@@ -41,7 +41,7 @@ include '../../common/view/tablesorter.html.php';
             <th><?php echo $lang->user->pos_label;?></th>
           <th><?php echo $lang->user->email;?></th>
           <th><?php echo $lang->user->gender;?></th>
-          <th><?php echo $lang->user->phone;?></th>
+          <th><?php echo $lang->user->qq;?></th>
           <th><?php echo $lang->user->join;?></th>
           <th><?php echo $lang->user->last;?></th>
           <th><?php echo $lang->user->visits;?></th>
@@ -57,7 +57,7 @@ include '../../common/view/tablesorter.html.php';
             <td><?php echo $lang->user->position[$user->position];?></td>
           <td><?php echo html::mailto($user->email);?></td>
           <td><?php if(isset($lang->user->genderList->{$user->gender})) echo $lang->user->genderList->{$user->gender};?></td>
-          <td><?php echo $user->phone;?></td>
+          <td><?php echo $user->open_id;?></td>
           <td><?php echo $user->join;?></td>
           <td><?php echo date('Y-m-d', $user->last);?></td>
           <td><?php echo $user->visits;?></td>

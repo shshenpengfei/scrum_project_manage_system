@@ -13,6 +13,7 @@
 <?php include '../../common/view/header.html.php';?>
 <?php include '../../common/view/chosen.html.php';?>
 <?php include '../../common/view/autocomplete.html.php';?>
+<?php include '../../common/view/datepicker.html.php';?>
 <?php include '../../common/view/alert.html.php';?>
 <?php include '../../common/view/kindeditor.html.php';?>
 <script>var holders = <?php echo json_encode($lang->bug->placeholder);?></script>
@@ -68,6 +69,10 @@ userList = "<?php echo join(',', array_keys($users));?>".split(',');
     <tr>
       <th class='rowhead'><?php echo $lang->bug->task;?></th>
       <td><span id='taskIdBox'><?php echo html::select('task', $tasks, $taskID);?></span></td>
+    </tr>
+    <tr>
+      <th class='rowhead'><?php echo $lang->bug->deadline;?></th>
+      <td><?php echo html::input('deadline', '', "class='text-3 date'");?></td>
     </tr>
     <tr>
       <th class='rowhead'><?php echo $lang->bug->lblTypeAndSeverity;?></th>

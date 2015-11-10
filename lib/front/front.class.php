@@ -17,6 +17,54 @@
  */
 class html
 {
+
+
+    /** post方式调用接口*/
+    public static function http_post_data($url, $data_string) {
+        $ch = curl_init();
+        //设置选项，包括URL
+        curl_setopt($ch,CURLOPT_URL,$url);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data_string);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch,CURLOPT_HEADER,0);
+        ob_start();
+        //curl_exec($ch);
+        $file_contents = curl_exec($ch);//获得返回值
+        curl_close($ch);
+        return $file_contents;
+    }
+
+    public static function sendQqTips($param){
+        //完成企业qq通知
+        $company_id=COMPANYID;
+        $company_token=COMPANYTOKEN;
+        $app_id="200459371";
+        $client_ip="127.0.0.1";
+        $oauth_version=2;
+        $to_all=0;
+        $receivers=$param['to'];
+        $window_title=$param['window_title'];
+        $tips_title=$param['tips_title'];
+        $tips_content=$param['tips_content'];
+        $tips_url=$param['tips_url'];
+
+        $apiUrl="https://openapi.b.qq.com/api/tips/send";
+        $param=array(
+            "company_id"=>$company_id,
+            "company_token"=>$company_token,
+            "app_id"=>$app_id,
+            "client_ip"=>$client_ip,
+            "oauth_version"=>$oauth_version,
+            "to_all"=>$to_all,
+            "receivers"=>$receivers,
+            "window_title"=>$window_title,
+            "tips_title"=>$tips_title,
+            "tips_url"=>$tips_url,
+            "tips_content"=>$tips_content
+        );
+        html::http_post_data($apiUrl,$param);
+    }
+
     /**
      * Create the title tag. 
      * 
@@ -887,4 +935,6 @@ class css
     {
         echo "<style>$css</style>";
     }
+
+
 }

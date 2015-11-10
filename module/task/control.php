@@ -380,6 +380,18 @@ class task extends control
             if(dao::isError()) die(js::error(dao::getError()));
             $actionID = $this->action->create('task', $taskID, 'Assigned', $this->post->comment, $this->post->assignedTo);
             $this->action->logHistory($actionID, $changes);
+
+            $task = $this->task->getById($taskID, true);
+            $userinfo    = $this->loadModel('user')->getById($_POST['assignedTo']);
+            $pragram=array(
+                'window_title'=>"我查查PMO通知",
+                'tips_title'=>"有一个任务指派给了你",
+                'tips_url'=>PM_SITE.$this->createLink('task', 'view', "taskID=$taskID"),
+                'tips_content'=>"任务id".$taskID."\n 任务标题:".$task->name,
+                'to'=>$userinfo->open_id
+            );
+            html::sendQqTips($pragram);
+
             $this->sendmail($taskID, $actionID);
 
             die(js::locate($this->createLink('task', 'view', "taskID=$taskID"), 'parent'));

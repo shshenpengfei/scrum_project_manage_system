@@ -139,7 +139,13 @@ class report extends control
             //被指派bug总数
             $bugnum = $this->dao->select('COUNT(*) AS bnum')->from(TABLE_BUG)
             ->where('assignedTo')->eq($uinfo->account)->fetch();
-            $userlist[$u]->bugnum=$bugnum->bnum;  
+            $userlist[$u]->bugnum=$bugnum->bnum;
+
+            //未完成BUG总数
+            $unFinishBugnum = $this->dao->select('COUNT(*) AS tnum')->from(TABLE_BUG)
+                ->where('assignedTo')->eq($uinfo->account)->andwhere('status')
+                ->in('doing','wait','')->fetch();
+            $userlist[$u]->unFinishBugnum=$unFinishBugnum->tnum;
 
             //提出bug总数
             $create_bugnum = $this->dao->select('COUNT(*) AS bnum')->from(TABLE_BUG)

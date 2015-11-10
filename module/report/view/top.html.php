@@ -76,6 +76,9 @@
                         </td>
 
                         <td>
+                            <?php
+                            echo $item->unFinishBugnum;
+                            ?>
                         </td>
 
                         <td >

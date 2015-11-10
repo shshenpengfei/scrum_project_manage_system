@@ -1,0 +1,187 @@
+*{
+    font-family: "Microsoft YaHei","Open Sans","Helvetica Neue",Helvetica,Arial,Sans-Serif; 
+}    
+body{
+    height: 100%;
+    background-image: url("../images/bg.jpg");
+    -moz-background-size:100% 100%; /* 老版本的 Firefox */
+    -o-background-size:100% 100%;
+    background-size:100% 100%;
+    background-repeat:no-repeat;
+    filter : progid:DXImageTransform.Microsoft.AlphaImageLoader ( sizingMethod='scale' , src='../images/bg.jpg') ;    
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+.btn:hover{
+    opacity: 0.8;
+    outline:3px solid #003C78;
+    transform: scale(1.03);
+    -ms-transform: scale(1.03);     /* IE 9 */
+    -webkit-transform: scale(1.03);     /* Safari 和 Chrome */
+    -o-transform: scale(1.03);     /* Opera */
+    -moz-transform: scale(1.03);    
+}            
+.btn {
+    font-family: "Microsoft YaHei","Open Sans","Helvetica Neue",Helvetica,Arial,Sans-Serif; 
+    font-size: 20px;
+    line-height: 30px;
+    border-color: #5BB75B;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    letter-spacing: 0.02em;
+    color: #FFFFFF;
+    padding: 30px 20px;
+    margin: 5px 5px;
+    display: block;
+    float:left;                     
+}
+.btn-red{
+    background-color: #D53a49;
+}
+.btn-yellow{
+    background-color: #f57f3f;
+}
+.btn-black{
+    background-color: #403e3b;
+}
+.btn-gray{
+    background-color: rgba(182, 182, 182, 0.9);
+}
+.btn-blue{
+    background-color: #1756d4;
+}
+.btn-violet{
+    background-color: #662ba8;
+}
+.btn-green{
+    background-color: #52a932;                
+}
+.btn-one{
+    width:90px;
+    height: 70px;
+    border: none;
+}
+.btn-two,.btn-wpa{
+    width:230px;
+    height: 70px;
+    border: none;
+}  
+.btn-back{  
+    width: 150px;
+    height: 30px;
+    border: 2px solid #003C78;
+    opacity: 0;
+    transition: opacity 1s;
+    -moz-transition: opacity 1s;     /* Firefox 4 */
+    -webkit-transition: opacity 1s;     /* Safari 和 Chrome */
+    -o-transition: opacity 1s;    
+}   
+.hide {display:none;}
+.frame{
+    position: absolute;
+    left: -40%;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    padding-left: 30px;
+    transition: width 0.5s ,height 0.5s,left 0.5s , top 1s;
+    -moz-transition: width 0.5s ,height 0.5s,left 0.5s , top 1s;     /* Firefox 4 */
+    -webkit-transition: width 0.5s ,height 0.5s,left 0.5s , top 1s;     /* Safari 和 Chrome */
+    -o-transition: width 0.5s ,height 0.5s,left 0.5s , top 1s;   
+    overflow-y: hidden;
+    overflow-x: auto;
+}
+.banner{
+    color: white;
+    clear:both;
+    height : auto;
+    width:100%;
+    margin-left: 30px;
+    margin-bottom: 10px;
+}
+.btn-brand{
+    font-size: 28px;
+    color: white;
+    width:160px;
+    border: none;
+    text-decoration: none;
+}  
+.btn-login{
+    font-size: 22px;
+    color: white;
+    width:160px;
+    height: 40px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    text-align: center;
+    vertical-align: middle;
+    color: #FFFFFF;
+    padding: 5px 13px;
+    white-space:nowrap;
+}  
+.btn-login:hover{
+    opacity: 0.8;
+    outline:2px solid #003C78;               
+}   
+input.idinput{
+    width: 250px;
+    height: 25px;
+}
+.banner label{
+    cursor: pointer;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 20px;                
+}
+.metro{
+    width: 100%;
+
+}
+
+@keyframes hint
+{
+    0%   {background: red; margin-left:0px;}
+25%  {background: black; margin-left:100px;}
+50%  {background: blue; margin-left:200px;}
+75%  {background: green; margin-left:300px;}
+100% {background: red; margin-left:400px;}
+}
+
+@-moz-keyframes hint /* Firefox */
+{
+    0%   {background: red; margin-left:0px;}
+25%  {background: black; margin-left:100px;}
+50%  {background: blue; margin-left:200px;}
+75%  {background: green; margin-left:300px;}
+100% {background: red; margin-left:400px;}
+}
+
+@-webkit-keyframes hint /* Safari 和 Chrome */
+{
+    0%   {background: red; margin-left:0px;}
+25%  {background: black; margin-left:100px;}
+50%  {background: blue; margin-left:200px;}
+75%  {background: green; margin-left:300px;}
+100% {background: red; margin-left:400px;}
+}
+
+@-o-keyframes hint /* Opera */
+{
+    0%   {background: red; margin-left:0px;}
+25%  {background: black; margin-left:100px;}
+50%  {background: blue; margin-left:200px;}
+75%  {background: green; margin-left:300px;}
+100% {background: red; margin-left:400px;}
+}
+
+.hintlogin
+{
+    padding: 5px 5px;
+    font-size: 26px;
+    animation: hint 5s linear 0s infinite alternate;
+    -moz-animation: hint 5s linear 0s infinite alternate;	/* Firefox */
+    -webkit-animation: hint 5s linear 0s infinite alternate;	/* Safari 和 Chrome */
+    -o-animation: hint 5s linear 0s infinite alternate;	/* Opera */
+}
