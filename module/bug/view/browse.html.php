@@ -92,6 +92,8 @@ var customed   = <?php echo (int)$customed;?>;
           <?php if($this->cookie->windowWidth >= $this->config->wideSize):?>
           <th class='w-date'>  <?php common::printOrderLink('resolvedDate', $orderBy, $vars, $lang->bug->resolvedDateAB);?></th>
           <?php endif;?>
+          <th class='w-date'>  <?php common::printOrderLink('resolvedDate', $orderBy, $vars, $lang->bug->deadlineDate);?></th>
+
 
           <th class='w-100px {sorter:false}'><?php echo $lang->actions;?></th>
           <?php endif;?>
@@ -129,7 +131,7 @@ var customed   = <?php echo (int)$customed;?>;
           <?php if($this->cookie->windowWidth >= $this->config->wideSize):?>
           <td><?php echo substr($bug->resolvedDate, 5, 11)?></td>
           <?php endif;?>
-
+          <td><?php echo $bug->deadline;?></td>
           <td class='a-right'>
             <?php
             $params = "bugID=$bug->id";

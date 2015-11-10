@@ -81,7 +81,9 @@ foreach($extConfigFiles as $extConfigFile) include $extConfigFile;
 /* Set default table prefix. */
 if(!isset($config->db->prefix)) $config->db->prefix = 'zt_';
 
-define('PM_SITE','http://www.pm-wcc.com/');
+define('PM_SITE','http://www.pm-scrum.com/');
+define('COMPANYID','e45700043555bbb8b045fa4185813473');
+define('COMPANYTOKEN','2aa699360502e6c208f3503ab257a4a4');
 define('CODEREVIEW_SITE','http://codereview.wochacha.cn');
 
 /* Define the tables. */

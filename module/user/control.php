@@ -216,6 +216,39 @@ class user extends control
         $this->display();
     }
 
+
+    public function getLatestUserOpenids(){
+        $company_id="e45700043555bbb8b045fa4185813473";
+        $company_token="2aa699360502e6c208f3503ab257a4a4";
+        $app_id="200459371";
+        $client_ip="127.0.0.1";
+        $oauth_version=2;
+        $timestamp=0;
+        $apiUrl="https://openapi.b.qq.com/api/user/list";
+        $param=array(
+            "company_id"=>$company_id,
+            "company_token"=>$company_token,
+            "app_id"=>$app_id,
+            "client_ip"=>$client_ip,
+            "oauth_version"=>$oauth_version,
+            "timestamp"=>$timestamp);
+        $result=json_decode(html::http_post_data($apiUrl,$param));
+        //导入成功
+        if($result->ret == 0){
+            $items = $result->data->items;
+
+            foreach ($items as $value) {
+                $open_id=$value->open_id;
+                $account=$value->account;
+                echo $open_id."__".$account."<br>";
+                $this->dao->update(TABLE_USER)->set('open_id')->eq($open_id)->where('account')->eq($account)->exec();
+                $open_id ="";
+                $account ="";
+            }
+        }
+    }
+
+
     /**
      * Set the rerferer.
      * 
