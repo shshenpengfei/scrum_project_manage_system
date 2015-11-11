@@ -21,6 +21,21 @@ $config->git->client    = '/usr/bin/git';
 $i = 1;
 $config->git->repos[$i]['path'] = '/Users/shenpengfei/git_repository/pm_wcc/scrum_project_manage_system/.git';
 
+
+$i ++;
+$config->git->repos[$i]['path'] = '/usr/local/www/codelist/db_financial/.git';
+
+$i ++;
+$config->git->repos[$i]['path'] = '/usr/local/www/codelist/db_business/.git';
+
+$i ++;
+$config->git->repos[$i]['path'] = '/usr/local/www/codelist/wochacha_mall/.git';
+
+$i ++;
+$config->git->repos[$i]['path'] = '/usr/local/www/codelist/wccpc/.git';
+
+
+
 /*
  $i ++;
  $config->git->repos[$i]['path'] = '/Users/shenpengfei/git_repository/pm_wcc/scrum_project_manage_system/db_core.git';
