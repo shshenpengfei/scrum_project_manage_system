@@ -18,7 +18,7 @@ class projectModel extends model
 
     /**
      * Check the privilege. 
-     * 
+     *
      * @param  object    $project 
      * @access public
      * @return bool
@@ -929,6 +929,7 @@ class projectModel extends model
                 $member->account = $account;
                 $member->join    = helper::today();
                 $this->dao->insert(TABLE_TEAM)->data($member)->exec();
+                $actionID = $this->loadModel('action')->create('project', $projectID, 'linkmember', "",$account);
             }
         }        
     }
@@ -936,7 +937,7 @@ class projectModel extends model
     /**
      * Unlink a member.
      * 
-     * @param  int    $projectID 
+     * @param  int    $projectID x
      * @param  string $account 
      * @access public
      * @return void
@@ -944,6 +945,7 @@ class projectModel extends model
     public function unlinkMember($projectID, $account)
     {
         $this->dao->delete()->from(TABLE_TEAM)->where('project')->eq((int)$projectID)->andWhere('account')->eq($account)->exec();
+        $actionID = $this->loadModel('action')->create('project', $projectID, 'unlinkmember', "",$account);
     }
 
     /**
