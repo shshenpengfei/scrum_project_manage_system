@@ -53,7 +53,9 @@ $lang->action->objectTypes['doclib']      = '文档库';
 $lang->action->objectTypes['todo']        = 'TODO';
 $lang->action->objectTypes['sqlreview']        = 'SQL评审';
 
-/* 用来描述操作历史记录。*/
+/* 用来描述操作历史记录。
+增加了团队成员相关动作
+*/
 $lang->action->desc->common       = '$date, <strong>$action</strong> by <strong>$actor</strong>。' . "\n";
 $lang->action->desc->extra        = '$date, <strong>$action</strong> as <strong>$extra</strong> by <strong>$actor</strong>。' . "\n";
 $lang->action->desc->opened       = '$date, 由 <strong>$actor</strong> 创建。' . "\n";
