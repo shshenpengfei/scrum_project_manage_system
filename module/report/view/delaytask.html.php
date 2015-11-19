@@ -35,7 +35,12 @@
                     $taskLink      = $this->createLink('task', 'view', "task=$delay->task");
                     $storyLink      = $this->createLink('story', 'view', "storyID=$delay->story");
                     ?>
-                    <tr class="a-center">
+                    <tr class="a-center"
+                        <?php if($delay->current_deleted ==1){
+                        ?>
+                        style="text-decoration:line-through;color: #949494"
+                        <?php } ?>
+                        >
                         <td><?php echo $delay->task;?></td>
                         <td><?php echo html::a($taskLink,$delay->taskName,"_blank","title=".$delay->taskName);?></td>
                         <td><?php echo $delay->story;?></td>
@@ -44,7 +49,9 @@
                         <td><?php echo $delay->projectName;?></td>
                         <td><?php echo $this->task->getRealNameByAccount($delay->assignedTo);?></td>
                         <td><?php echo $lang->task->statusList[$delay->status];?></td>
-                        <td><?php echo $lang->task->statusList[$delay->current_status];?></td>
+                        <td>
+                            <?php echo $lang->task->statusList[$delay->current_status];?>
+                        </td>
                         <td><?php echo $delay->delayDate;?></td>
                         <td><?php echo $delay->delayDays;?></td>
                     </tr>

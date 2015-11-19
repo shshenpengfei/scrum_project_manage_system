@@ -440,6 +440,8 @@ EOT;
         foreach($delays as $k=>$v){
             $story = $this->dao->findById((int)$v->task)->from(TABLE_TASK)->fetch();
             $delays[$k]->current_status = $story->status;
+            $delays[$k]->current_deleted = $story->deleted;
+
         }
         return $delays;
     }
