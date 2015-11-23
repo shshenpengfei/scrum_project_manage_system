@@ -288,6 +288,14 @@ EOT;
         $projectPairs = $this->loadModel('project')->getPairs();
         foreach($projects as $id => $project)
         {
+            $teamMemers = count($this->loadModel('project')->getTeamMemberPairs($id))-1;
+            $projects[$id]->teamMember = $teamMemers;
+            $projectInfo = $this->loadModel('project')->getById($id);
+            $projects[$id]->begin = $projectInfo->begin;
+            $projects[$id]->end = $projectInfo->end;
+            $projects[$id]->status = $projectInfo->status;
+
+
             if(!isset($project->stories)) $projects[$id]->stories = 0;
             if(!isset($project->bugs)) $projects[$id]->bugs = 0;
             if(!isset($project->devConsumed)) $projects[$id]->devConsumed = 0;
@@ -329,7 +337,7 @@ EOT;
     }
 
     /**
-     * Get bugs 
+     * Get bugs X
      * 
      * @param  int    $begin 
      * @param  int    $end 

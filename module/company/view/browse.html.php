@@ -36,6 +36,7 @@ include '../../common/view/tablesorter.html.php';
         <thead>
         <tr class='colhead'>
           <th class='w-id'><?php echo $lang->idAB;?></th>
+            <th>头像</th>
           <th><?php echo $lang->user->realname;?></th>
           <th><?php echo $lang->user->account;?></th>
             <th><?php echo $lang->user->pos_label;?></th>
@@ -52,6 +53,7 @@ include '../../common/view/tablesorter.html.php';
         <?php foreach($users as $user):?>
         <tr class='a-center'>
           <td><?php echo $user->id;?></td>
+          <td><img src="<?php echo $user->face;?>"></td>
           <td><?php if(!common::printLink('user', 'view', "account=$user->account", $user->realname)) echo $user->realname;?></td>
           <td><?php echo $user->account;?></td>
             <td><?php echo $lang->user->position[$user->position];?></td>

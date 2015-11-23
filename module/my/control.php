@@ -331,7 +331,7 @@ class my extends control
 
     /**
      * Edit profile 
-     * 
+     *
      * @access public
      * @return void
      */
