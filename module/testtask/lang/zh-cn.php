@@ -25,7 +25,7 @@ $lang->testtask->createBug      = "提Bug";
 $lang->testtask->assign         = '指派';
 $lang->testtask->cases          = '用例';
 
-$lang->testtask->common         = '测试任务';
+$lang->testtask->common         = '版本测试任务';
 $lang->testtask->id             = '任务编号';
 $lang->testtask->product        = '所属产品';
 $lang->testtask->project        = '所属项目';

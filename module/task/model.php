@@ -214,6 +214,10 @@ class taskModel extends model
         return $StandDate->standtime;
     }
 
+    /**
+     * 绑定站立会任务
+     * @return bool
+     */
     public function batchChoose(){
             $task=array();
             $taskIDList = $this->post->taskIDList ? $this->post->taskIDList : array();
@@ -226,12 +230,16 @@ class taskModel extends model
                     //    ->set('addtime')->eq(time())
                     //    ->exec();
 
+                    $TaskInfo = $this->getById($taskID);
+
                     $this->dao->update(TABLE_TASK)
                         ->set('standtime')->eq($this->post->standdate[$taskID])
+                        ->set('deadline')->eq($this->post->standdate[$taskID])
                         ->where('id')->eq($this->post->taskIDList[$taskID])
                         ->exec();
 
-                    $actionID = $this->loadModel('action')->create('task', $taskID, 'addtostand');
+                    $actionID = $this->loadModel('action')->create('task', $taskID, 'addtostand',
+                        '站立会上将截止时间从'.$TaskInfo->deadline.'修改为'.$this->post->standdate[$taskID]);
                 }
             }
 

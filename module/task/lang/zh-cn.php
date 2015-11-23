@@ -33,6 +33,7 @@ $lang->task->reportday        = "今日报表";
 $lang->task->reportToMail        = "发送报表";
 $lang->task->reportweekly        = "周报";
 
+
 $lang->task->value = "任务贡献值";
 
 $lang->task->common            = '任务';
@@ -98,7 +99,7 @@ $lang->task->typeList['']        = '';
 $lang->task->typeList['design']  = 'UI设计';
 $lang->task->typeList['dba']  = '数据库设计';
 $lang->task->typeList['devel']   = '开发';
-$lang->task->typeList['test']    = '测试';
+$lang->task->typeList['test']    = '功能测试';
 $lang->task->typeList['yunwei']      = '运维部署';
 $lang->task->typeList['study']   = '研究';
 $lang->task->typeList['discuss'] = '讨论';

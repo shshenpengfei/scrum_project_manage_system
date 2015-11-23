@@ -4,7 +4,7 @@
     <div class='f-left'><span class='icon-dynamic'></span><?php echo $lang->my->home->latest;?></div>
     <div class='f-right'><?php common::printLink('company', 'dynamic', '', $lang->more . "<span class='icon-more'></span>");?></div>
   </caption>
-  <?php 
+  <?php
   foreach($actions as $action)
   {
       $canView = false;

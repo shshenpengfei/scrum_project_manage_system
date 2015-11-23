@@ -14,10 +14,10 @@
 <?php include '../../common/view/tablesorter.html.php';?>
 <?php include '../../common/view/datepicker.html.php';?>
 <form method='post' target='hiddenwin' action="<?php echo $this->inLink('batchStandChoose', "projectID=$projectID&from=taskbatchStandChoose")?>">
-  <table class='table-1 fixed'> 
+  <table class='table-1 fixed'>
     <caption><?php echo $lang->task->common . $lang->colon . $lang->task->batchEdit;?></caption>
     <tr>
-      <th class='w-20px'><?php echo $lang->idAB;?></th> 
+      <th class='w-20px'><?php echo $lang->idAB;?></th>
       <th class='w-200px'> <?php echo $lang->task->name;?></th>
       <th class='w-100px'><?php echo $lang->task->assignedTo;?></th>
       <th class='w-100px'><?php echo $lang->typeAB;?></th>

@@ -250,6 +250,74 @@ class user extends control
 
 
     /**
+     * 获取最新的用户头像
+     */
+    public function getLatestUserFaces(){
+        //获取open id 列表
+        $company_id="e45700043555bbb8b045fa4185813473";
+        $company_token="2aa699360502e6c208f3503ab257a4a4";
+        $app_id="200459371";
+        $client_ip="127.0.0.1";
+        $oauth_version=2;
+        $timestamp=0;
+        $apiUrl="https://openapi.b.qq.com/api/user/list";
+        $param=array(
+            "company_id"=>$company_id,
+            "company_token"=>$company_token,
+            "app_id"=>$app_id,
+            "client_ip"=>$client_ip,
+            "oauth_version"=>$oauth_version,
+            "timestamp"=>$timestamp);
+        $result=json_decode(html::http_post_data($apiUrl,$param));
+        $open_id_string="";
+        //导入成功
+        if($result->ret == 0){
+            $items = $result->data->items;
+            foreach ($items as $value) {
+                $open_id=$value->open_id;
+                //echo $open_id."<br>";
+                $open_id_string.=$open_id.",";
+            }
+        }
+        //组合成一个字符串
+        $open_id_string=substr($open_id_string,0,strlen($open_id_string)-1);
+        echo $open_id_string."<br><br>";
+        //传入得到头像列表
+        $company_id="e45700043555bbb8b045fa4185813473";
+        $company_token="2aa699360502e6c208f3503ab257a4a4";
+        $app_id="200459371";
+        $client_ip="127.0.0.1";
+        $oauth_version=2;
+        $timestamp=0;
+        $apiUrl="https://openapi.b.qq.com/api/user/face";
+        $param=array(
+            "company_id"=>$company_id,
+            "company_token"=>$company_token,
+            "app_id"=>$app_id,
+            "client_ip"=>$client_ip,
+            "oauth_version"=>$oauth_version,
+            "open_ids"=>$open_id_string,
+            "type_id"=>2);
+        $result_face=json_decode(html::http_post_data($apiUrl,$param));
+        var_dump($result_face);
+        //导入成功
+        if($result_face->ret == 0){
+            $items_face = $result_face->data->items;
+            foreach ($items_face as $k=>$v) {
+                echo $k."_____".$v."<br>";
+                $this->dao->update(TABLE_USER)->set('face')->eq($v)->where('open_id')->eq($k)->exec();
+                //$open_id ="";
+                //$account ="";
+            }
+        }
+        //循环写入表中
+
+    }
+
+
+
+
+    /**
      * Set the rerferer.
      * 
      * @param  string   $referer 

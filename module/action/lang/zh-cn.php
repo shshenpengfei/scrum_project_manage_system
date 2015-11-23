@@ -66,6 +66,8 @@ $lang->action->desc->linkmember       = '$date, 由 <strong>$actor</strong> 增�
 $lang->action->desc->unlinkmember       = '$date, 由 <strong>$actor</strong> 移除了团队成员<strong>$extra</strong>。' . "\n";
 $lang->action->desc->assigned     = '$date, 由 <strong>$actor</strong> 指派给 <strong>$extra</strong>。' . "\n";
 $lang->action->desc->closed       = '$date, 由 <strong>$actor</strong> 关闭。' . "\n";
+$lang->action->desc->addtostand       = '$date, 由 <strong>$actor</strong> 在站立会上选择当日开发。' . "\n";
+
 $lang->action->desc->deleted      = '$date, 由 <strong>$actor</strong> 删除。' . "\n";
 $lang->action->desc->deletedfile  = '$date, 由 <strong>$actor</strong> 删除了附件：<strong><i>$extra</i></strong>。' . "\n";
 $lang->action->desc->editfile     = '$date, 由 <strong>$actor</strong> 编辑了附件：<strong><i>$extra</i></strong>。' . "\n";
