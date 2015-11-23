@@ -217,7 +217,7 @@ class task extends control
     }
 
     /**
-     * Batch edit task.
+     * 站立会选任务
      *
      * @param  int    $projectID
      * @param  string $from example:projectTask, taskBatchEdit
