@@ -320,7 +320,7 @@
         };
 
 // Apply the theme
-        var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
+        //var highchartsOptions = Highcharts.setOptions(Highcharts.theme);
 
 
         $('#container').highcharts({
