@@ -143,6 +143,9 @@ $lang->action->label->failed_checkout               = '下班失败';
 $lang->action->label->alpharesolved               = 'alpha环境上已确认修复';
 $lang->action->label->betaresolved               = '预发布beta环境上已确认验证修复';
 
+$lang->action->label->linkmember               = '增加了团队成员';
+$lang->action->label->unlinkmember               = '移除了团队成员';
+
 $lang->action->label->addtostand               = '站立会上选择';
 $lang->action->label->illegal_login               = '非法登录';
 
