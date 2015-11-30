@@ -54,8 +54,9 @@ var browseType = '<?php echo $browseType;?>';
             <th class='w-p30'>   <?php common::printOrderLink('name',      $orderBy, $vars, $lang->task->name);?></th>
             <th class='w-status'><?php common::printOrderLink('status',    $orderBy, $vars, $lang->statusAB);?></th>
             <th class='w-70px'>  <?php common::printOrderLink('deadline',  $orderBy, $vars, $lang->task->deadlineAB);?></th>
+              <th class='w-70px'>  <?php common::printOrderLink('delayDays',  $orderBy, $vars, $lang->task->deaddays);?></th>
 
-            <?php if($this->cookie->windowWidth > $this->config->wideSize):?>
+              <?php if($this->cookie->windowWidth > $this->config->wideSize):?>
             <th class='w-id'>    <?php common::printOrderLink('openedDate',$orderBy, $vars, $lang->task->openedDateAB);?></th>
             <?php endif;?>
 
@@ -106,11 +107,12 @@ var browseType = '<?php echo $browseType;?>';
               $storyChanged ? print("<span class='warning'>{$lang->story->changed}</span> ") : print($lang->task->statusList[$task->status]);
               ?>
             </td>
-            <td class=<?php if(isset($task->delay)) echo 'delayed';?>><?php if(substr($task->deadline, 0, 4) > 0) echo substr($task->deadline, 5, 6);?></td>
+            <td class=<?php if(isset($task->delaytask)) echo 'delayed';?>><?php if(substr($task->deadline, 0, 4) > 0) echo substr($task->deadline, 5, 6);?></td>
 
             <?php if($this->cookie->windowWidth > $this->config->wideSize):?>
-            <td><?php echo substr($task->openedDate, 5, 6);?></td>
+                <td><?php echo substr($task->openedDate, 5, 6);?></td>
             <?php endif;?>
+              <td><?php echo $task->delaytask;?></td>
 
             <td <?php echo $class;?>><?php echo $task->assignedToRealName;?></td>
             <td><?php echo $users[$task->finishedBy];?></td>

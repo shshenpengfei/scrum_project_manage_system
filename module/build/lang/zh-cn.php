@@ -14,6 +14,7 @@ $lang->build->create    = "创建版本";
 $lang->build->edit      = "编辑版本";
 $lang->build->delete    = "删除版本";
 $lang->build->view      = "版本详情";
+$lang->build->status    = "版本阶段";
 $lang->build->ajaxGetProductBuilds = '接口:产品版本列表';
 $lang->build->ajaxGetProjectBuilds = '接口:项目版本列表';
 
@@ -40,3 +41,13 @@ $lang->build->finishStories = '本次共完成需求%s个';
 $lang->build->resolvedBugs  = '本次共解决Bug%s个';
 
 $lang->build->notice = '版本请到[项目视图]-[版本]创建。';
+
+/* 字段取值列表。*/
+$lang->build->statusList['wait']  = '① 未开始';
+$lang->build->statusList['master'] = '②主分支已准备[开始]';
+$lang->build->statusList['alpha'] = '③alpha环境已部署';
+$lang->build->statusList['test_doing'] = '④版本测试中';
+$lang->build->statusList['test_done'] = '⑤版本测试完毕';
+$lang->build->statusList['beta'] = '⑥验收完毕';
+$lang->build->statusList['release'] = '⑦生产环境已发布';
+$lang->build->statusList['release_done'] = '⑧生产环境已验证[结束]';

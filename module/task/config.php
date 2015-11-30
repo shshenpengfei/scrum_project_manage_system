@@ -1,6 +1,6 @@
 <?php
 $config->task->batchCreate = 10;
-$config->task->create->requiredFields      = 'name,type,estimate,estStarted,deadline';
+$config->task->create->requiredFields      = 'name,type,estimate,deadline';
 $config->task->edit->requiredFields        = $config->task->create->requiredFields;
 $config->task->start->requiredFields       = 'estimate';
 $config->task->finish->requiredFields      = 'consumed';

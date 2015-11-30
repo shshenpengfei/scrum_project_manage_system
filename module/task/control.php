@@ -35,7 +35,7 @@ class task extends control
      */
     public function create($projectID = 0, $storyID = 0, $moduleID = 0)
     {
-        $project   = $this->project->getById($projectID); 
+        $project   = $this->project->getById($projectID);
         $taskLink  = $this->createLink('project', 'browse', "projectID=$projectID&tab=task");
         $storyLink = $this->session->storyList ? $this->session->storyList : $this->createLink('project', 'story', "projectID=$projectID");
         $this->view->users    = $this->loadModel('user')->getPairs('noletter');
@@ -45,6 +45,8 @@ class task extends control
 
         if(!empty($_POST))
         {
+            var_dump($_POST);
+
             $tasksID = $this->task->create($projectID);
             if(dao::isError()) die(js::error(dao::getError()));
 

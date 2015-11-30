@@ -614,10 +614,11 @@ class taskModel extends model
     {
         $orderBy = str_replace('status', 'statusCustom', $orderBy);
         $type    = strtolower($type);
-        $tasks = $this->dao->select('t1.*, t2.id AS storyID, t2.title AS storyTitle, t2.version AS latestStoryVersion, t2.status AS storyStatus, t3.realname AS assignedToRealName')
+        $tasks = $this->dao->select('t1.*, t2.id AS storyID, t2.title AS storyTitle, t2.version AS latestStoryVersion, t2.status AS storyStatus, t3.realname AS assignedToRealName,t4.delayDays')
             ->from(TABLE_TASK)->alias('t1')
             ->leftJoin(TABLE_STORY)->alias('t2')->on('t1.story = t2.id')
             ->leftJoin(TABLE_USER)->alias('t3')->on('t1.assignedTo = t3.account')
+            ->leftJoin(TABLE_DELAYTASK)->alias('t4')->on('t4.task = t1.id')
             ->where('t1.project')->eq((int)$projectID)
             ->andWhere('t1.deleted')->eq(0)
             ->beginIF($type == 'needconfirm')->andWhere('t2.version > t1.storyVersion')->andWhere("t2.status = 'active'")->fi()
@@ -628,10 +629,9 @@ class taskModel extends model
             ->orderBy($orderBy)
             ->page($pager)
             ->fetchAll();
-
         $this->loadModel('common')->saveQueryCondition($this->dao->get(), 'task');
-
-        if($tasks) return $this->processTasks($tasks);
+        if($tasks) return $this->DelayTaskIdIsExist($tasks);
+        //if($tasks) return $this->processTasks($tasks);
         return array();
     }
 
@@ -787,6 +787,18 @@ class taskModel extends model
         return $consumedSum;
     }
 
+
+    public function DelayTaskIdIsExist($tasks){
+        foreach($tasks as $task) {
+            $taskInfo = $this->loadModel("report")->DelayTaskIdIsExist($task->id);
+            if ($taskInfo->id) {
+                $task->delaytask = $taskInfo->delayDays;
+            }
+        }
+        return $tasks;
+    }
+
+
     /**
      * Batch process tasks.
      * 
@@ -799,6 +811,7 @@ class taskModel extends model
         $today = helper::today();
         foreach($tasks as $task)
         {
+
             /* Delayed or not. */
             if($task->status !== 'done' and $task->status !== 'cancel')
             {   
