@@ -10,7 +10,7 @@
  * @link        http://www.zentao.net
  */
 $lang->release->common    = '发布';
-$lang->release->create    = "创建发布";
+$lang->release->create    = "创建正式发布到生产环境";
 $lang->release->edit      = "编辑发布";
 $lang->release->delete    = "删除发布";
 $lang->release->view      = "发布详情";

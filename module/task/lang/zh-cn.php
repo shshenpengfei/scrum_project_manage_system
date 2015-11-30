@@ -58,6 +58,7 @@ $lang->task->estStarted        = '预计开始';
 $lang->task->realStarted       = '实际开始';
 $lang->task->deadline          = '截止日期';
 $lang->task->deadlineAB        = '截止';
+$lang->task->deaddays        = '延期天数';
 $lang->task->status            = '任务状态';
 $lang->task->statusCustom      = '状态排序';
 $lang->task->desc              = '任务描述';

@@ -152,8 +152,12 @@ echo $gantti;
               <tr>
                 <th class='rowhead'><?php echo $lang->build->name;?></th>
                 <td class='<?php if($build->deleted) echo 'deleted';?>'><?php echo $build->name;?></td>
-              </tr>  
-              <tr>
+              </tr>
+                <tr>
+                    <th class='rowhead'><?php echo $lang->build->status;?></th>
+                    <td><?php echo $lang->build->statusList[$build->status];?></td>
+                </tr>
+                <tr>
                 <th class='rowhead'><?php echo $lang->build->builder;?></th>
                 <td><?php echo $users[$build->builder];?></td>
               </tr>  

@@ -26,6 +26,7 @@
     <th><?php echo $lang->build->filePath;?></th>
     <th class='w-date'><?php echo $lang->build->date;?></th>
     <th class='w-user'><?php echo $lang->build->builder;?></th>
+      <th><?php echo $lang->build->status;?></th>
     <th class='w-150px'><?php echo $lang->actions;?></th>
   </tr>
   </thead>
@@ -39,6 +40,7 @@
     <td class='a-left nobr'><?php strpos($build->filePath, 'http') === 0 ? printf(html::a($build->filePath)) : printf($build->filePath);?></td>
     <td><?php echo $build->date?></td>
     <td><?php echo $users[$build->builder]?></td>
+      <td><?php echo $lang->build->statusList[$build->status];?></td>
     <td class='a-right'>
       <?php 
       common::printLink('testtask', 'create', "product=0&project=$project->id&build=$build->id", $lang->testtask->create);

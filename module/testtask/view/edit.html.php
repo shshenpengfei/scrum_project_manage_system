@@ -39,6 +39,7 @@
     <tr>
       <th class='rowhead'><?php echo $lang->testtask->status;?></th>
       <td><?php echo html::select('status', $lang->testtask->statusList, $task->status,  "class='select-3'");?>
+          【状态的改变将同步改变整个版本当前的状态】
     </tr>  
     <tr>
       <th class='rowhead'><?php echo $lang->testtask->name;?></th>

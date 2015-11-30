@@ -53,17 +53,20 @@ $(function()
     <tr>
       <th class='rowhead'><?php echo $lang->task->story;?></th>
       <td>
-        <?php echo html::select('story', $stories, $storyID, 'class=select-1 disabled=disabled ');?>
+        <?php echo html::select('story', $stories, $storyID, 'class=select-1 disabled=disabled');?>
+          <select name="story" id="story" style="display: none">
+              <option value="<?php echo $_GET['story'];?>" ></option>
+          </select>
         <a href='' id='preview' class='iframe'><?php echo $lang->preview;?></a>
       </td>
     </tr>
-      <tr>
+      <tr style="display: none">
           <th class='rowhead'><span style='color: #ff0000'>总计<?php echo $lang->story->value;?></span></th>
           <td>
           <?php echo $story->creditvalue?$story->creditvalue:0;?>分
           </td>
       </tr>
-      <tr>
+      <tr  style="display: none">
           <th class='rowhead'><span style='color: #ff0000'><?php echo $lang->task->value;?></span></th>
           <td>
               <?php echo html::input('creditvalue', '0', 'class="w-80px" ');?>分
