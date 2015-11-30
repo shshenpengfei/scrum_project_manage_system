@@ -13,7 +13,7 @@
 <?php include '../../common/view/header.html.php';?>
 <div class='a-center'>
   <?php
-  echo $charts; 
+  echo $charts;
   common::printLink('project', 'computeBurn', 'reload=yes', $lang->project->computeBurn, 'hiddenwin');
   printf($lang->project->howToUpdateBurn, $this->createLink('help', 'field', 'module=project&method-burn&field=updateburn'));
   ?>

@@ -248,7 +248,7 @@ class project extends control
         elseif($browseType != "bysearch")
         {
             $status = $status == 'byProject' ? 'all' : $status;
-            $tasks = $this->loadModel('task')->getProjectTasks($projectID, $status, $orderBy, $pager); 
+            $tasks = $this->loadModel('task')->getProjectTasks($projectID, $status, $orderBy, $pager);
         }
         else
         {   
@@ -286,7 +286,6 @@ class project extends control
         $pcw = $this->config->project->PCW;
         //人均时薪
         $pcwh = round($pcw/22/8);
-
         /* Assign. */
         $this->view->tasks           = $tasks;
         $this->view->tabID           = 'task';

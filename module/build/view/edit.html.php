@@ -23,7 +23,11 @@
     <tr>
       <th class='rowhead'><?php echo $lang->build->name;?></th>
       <td><?php echo html::input('name', $build->name, "class='text-3'");?></td>
-    </tr>  
+    </tr>
+      <tr>
+          <th class='rowhead'><?php echo $lang->build->status;?></th>
+          <td><?php echo html::select('status', $lang->build->statusList, $build->status, 'class=text-3');?></td>
+      </tr>
     <tr>
       <th class='rowhead'><?php echo $lang->build->builder;?></th>
       <td><?php echo html::select('builder', $users, $build->builder, 'class="select-3"');?></td>

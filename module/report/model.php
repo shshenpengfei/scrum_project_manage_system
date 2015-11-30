@@ -455,6 +455,15 @@ EOT;
     }
 
 
+    public function DelayTaskIdIsExist($task){
+        $taskInfo = $this->dao->select('id,task,delayDays')->from(TABLE_DELAYTASK)
+            ->where('task')->eq($task)
+            ->fetch();
+        return $taskInfo;
+    }
+
+
+
     /** 获取用户的每日数据*/
     public function getUserDayData($uid,$begin, $end){
         $worklist = $this->dao->select('sum(worktime) as sumtime,workday')->from(TABLE_CHECK)
