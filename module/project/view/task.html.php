@@ -54,7 +54,7 @@ var browseType = '<?php echo $browseType;?>';
             <th class='w-p30'>   <?php common::printOrderLink('name',      $orderBy, $vars, $lang->task->name);?></th>
             <th class='w-status'><?php common::printOrderLink('status',    $orderBy, $vars, $lang->statusAB);?></th>
             <th class='w-70px'>  <?php common::printOrderLink('deadline',  $orderBy, $vars, $lang->task->deadlineAB);?></th>
-              <th class='w-70px'>  <?php common::printOrderLink('delayDays',  $orderBy, $vars, $lang->task->deaddays);?></th>
+              <th class='w-70px'>  <?php common::printOrderLink('delaytaskdelayDays',  $orderBy, $vars, $lang->task->deaddays);?></th>
 
               <?php if($this->cookie->windowWidth > $this->config->wideSize):?>
             <th class='w-id'>    <?php common::printOrderLink('openedDate',$orderBy, $vars, $lang->task->openedDateAB);?></th>
