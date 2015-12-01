@@ -55,7 +55,7 @@ var browseType = '<?php echo $browseType;?>';
             <th class='w-status'><?php common::printOrderLink('status',    $orderBy, $vars, $lang->statusAB);?></th>
             <th class='w-70px'>  <?php common::printOrderLink('deadline',  $orderBy, $vars, $lang->task->deadlineAB);?></th>
               <th class='w-70px'>  <?php common::printOrderLink('deadline',  $orderBy, $vars, $lang->task->deaddays);?></th>
-              
+
               <?php if($this->cookie->windowWidth > $this->config->wideSize):?>
             <th class='w-id'>    <?php common::printOrderLink('openedDate',$orderBy, $vars, $lang->task->openedDateAB);?></th>
             <?php endif;?>
@@ -108,11 +108,11 @@ var browseType = '<?php echo $browseType;?>';
               ?>
             </td>
             <td class=<?php if(isset($task->delaytask)) echo 'delayed';?>><?php if(substr($task->deadline, 0, 4) > 0) echo substr($task->deadline, 5, 6);?></td>
+              <td><?php echo $task->delaytask;?></td>
 
             <?php if($this->cookie->windowWidth > $this->config->wideSize):?>
                 <td><?php echo substr($task->openedDate, 5, 6);?></td>
             <?php endif;?>
-              <td><?php echo $task->delaytask;?></td>
 
             <td <?php echo $class;?>><?php echo $task->assignedToRealName;?></td>
             <td><?php echo $users[$task->finishedBy];?></td>
