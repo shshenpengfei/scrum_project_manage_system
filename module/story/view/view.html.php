@@ -15,12 +15,12 @@
 <?php
 //if(isset($_GET['gante']) && $_GET['gante']=='story'){
 
-if(!empty($story->tasks)){
+if(!empty($story->tasks) && true == false ){
 $webRoot      = PM_SITE;
 $defaultTheme = $webRoot . 'theme/default/';
 css::import($defaultTheme . 'gante_styles/css/screen.css', 2.3);
 css::import($defaultTheme . 'gante_styles/css/gantti.css', 2.3);
-require('../../m_gante/lib/gantti.php'); 
+require('../../m_gante/lib/gantti.php');
 date_default_timezone_set('UTC');
 setlocale(LC_ALL, 'en_US');
 $data = array();
@@ -32,15 +32,15 @@ $data = array();
                       if($task->type == 'test'){
                         $data[]=  array(
                             'label'=>"[".$users[$task->assignedTo]."]".$task->name,
-                            'start' => $task->estStarted, 
+                            'start' => $task->estStarted,
                             'end'   => $task->deadline." 24:00:00",
                             'class'=>'urgent'
                         );
-                      }    
+                      }
                       else{
                         $data[]=  array(
                             'label'=>"[".$users[$task->assignedTo]."]".$task->name,
-                            'start' => $task->estStarted, 
+                            'start' => $task->estStarted,
                             'end'   => $task->deadline." 24:00:00",
                             //'class'=>'urgent'
                         );
@@ -53,7 +53,7 @@ $gantti = new Gantti($data, array(
   'cellwidth'  => 60,
   'cellheight' => 33
 ));
-    
+
 echo $gantti;
 }
 
@@ -91,6 +91,9 @@ echo $gantti;
   </div>
 </div>
 
+
+
+
 <table class='cont-rt5'>
   <tr valign='top'>
     <td>
@@ -103,6 +106,48 @@ echo $gantti;
         <div class='content'><?php echo $story->verify;?></div>
       </fieldset>
       <?php echo $this->fetch('file', 'printFiles', array('files' => $story->files, 'fieldset' => 'true'));?>
+
+        <fieldset>
+            <legend>TDD  测试驱动-测试用例</legend>
+        <?php
+        if($cases){
+            foreach($cases as $case)
+            {
+                echo '<span class="nobr">' . html::a($this->createLink('testcase', 'view', "caseID=$case->id"), "#$case->id $case->title") . '</span><br />';
+            ?>
+                <fieldset>
+                    <legend><?php echo $lang->testcase->precondition;?></legend>
+                    <?php echo $case->info->precondition;?>
+                </fieldset>
+
+                <table class='table-1 colored'>
+                    <tr class='colhead'>
+                        <th class='w-30px'><?php echo $lang->testcase->stepID;?></th>
+                        <th class='w-150px'><?php echo $lang->testcase->stepDesc;?></th>
+                        <th class='w-150px'><?php echo $lang->testcase->stepExpect;?></th>
+                    </tr>
+                    <?php
+                    foreach($case->info->steps as $stepID => $step)
+                    {
+                        $stepID += 1;
+                        echo "<tr><th class='rowhead w-id a-center strong'>$stepID</th>";
+                        echo "<td>" . nl2br($step->desc) . "</td>";
+                        echo "<td>" . nl2br($step->expect) . "</td>";
+                        echo "</tr>";
+                    }
+                    ?>
+                </table>
+            <?php
+            }
+        }
+        else{
+            echo "测试工程师未编写测试用例，或者暂未指派功能测试的任务";
+        }
+        ?>
+        </fieldset>
+
+
+
       <?php include '../../common/view/action.html.php';?>
       <div class='a-center actionlink'><?php if(!$story->deleted) echo $actionLinks;?></div>
       <div id='comment' class='hidden'>

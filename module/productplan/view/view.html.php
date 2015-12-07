@@ -15,7 +15,7 @@
 
 <?php
 
-if(!empty($planStories)){
+if(!empty($planStories)  && true == false ){
 $webRoot      = PM_SITE;
 $defaultTheme = $webRoot . 'theme/default/';
 css::import($defaultTheme . 'gante_styles/css/screen.css', 2.3);

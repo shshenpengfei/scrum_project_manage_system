@@ -386,13 +386,17 @@ class story extends control
         $storyID = (int)$storyID;
         $story   = $this->story->getById($storyID, $version, true);
         if(!$story) die(js::error($this->lang->notFound) . js::locate('back'));
-
         $story->files = $this->loadModel('file')->getByObject('story', $storyID);
         $product      = $this->dao->findById($story->product)->from(TABLE_PRODUCT)->fields('name, id')->fetch();
         $plan         = $this->dao->findById($story->plan)->from(TABLE_PRODUCTPLAN)->fetch('title');
         $bugs         = $this->dao->select('id,title')->from(TABLE_BUG)->where('story')->eq($storyID)->andWhere('deleted')->eq(0)->fetchAll();
         $fromBug      = $this->dao->select('id,title')->from(TABLE_BUG)->where('toStory')->eq($storyID)->fetch();
         $cases        = $this->dao->select('id,title')->from(TABLE_CASE)->where('story')->eq($storyID)->fetchAll();
+        foreach($cases as $key=>$value){
+            $cases[$key]->info = $this->loadModel("testcase")->getById('25');
+        }
+
+        //var_dump($cases);
         $modulePath   = $this->tree->getParents($story->module);
         $users        = $this->user->getPairs('noletter');
 
