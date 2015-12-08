@@ -10,6 +10,7 @@
  * @link        http://www.zentao.net
  */
 $lang->productplan->common    = '产品计划';
+$lang->productplan->plantype    = '计划类型';
 $lang->productplan->browse    = "浏览计划";
 $lang->productplan->index     = "计划列表";
 $lang->productplan->create    = "创建计划";

@@ -108,12 +108,12 @@ echo $gantti;
       <?php echo $this->fetch('file', 'printFiles', array('files' => $story->files, 'fieldset' => 'true'));?>
 
         <fieldset>
-            <legend>TDD  测试驱动-测试用例</legend>
+            <legend>TDD  测试驱动-测试用例(请产品、开发、测试同事注意，测试用例作为story的check标准之一)</legend>
         <?php
         if($cases){
             foreach($cases as $case)
             {
-                echo '<span class="nobr">' . html::a($this->createLink('testcase', 'view', "caseID=$case->id"), "#$case->id $case->title") . '</span><br />';
+                echo '<span class="nobr">' . html::a($this->createLink('testcase', 'view', "caseID=$case->id"), "#".$case->id." - ".$case->title." - ".$users[$case->openedBy]) . '</span><br />';
             ?>
                 <fieldset>
                     <legend><?php echo $lang->testcase->precondition;?></legend>
@@ -173,7 +173,7 @@ echo $gantti;
           </tr>
           <tr>
             <td class='rowhead'><?php echo $lang->story->module;?></td>
-            <td> 
+            <td>
             <?php
             if(empty($modulePath))
             {
@@ -226,7 +226,7 @@ echo $gantti;
                 <td class='rowhead'><?php echo $lang->story->testFinishdDate;?></td>
                 <td><?php echo $story->testFinishdDate;?></td>
             </tr>
-            
+
             <tr>
                 <td class='rowhead'><?php echo $lang->story->releasedDate;?></td>
                 <td><?php echo $story->releasedDate;?></td>
@@ -336,7 +336,7 @@ echo $gantti;
         <legend><?php echo $lang->story->legendLinkStories;?></legend>
         <div>
           <?php
-          $linkStories = explode(',', $story->linkStories) ;    
+          $linkStories = explode(',', $story->linkStories) ;
           foreach($linkStories as $linkStoryID)
           {
               if(isset($story->extraStories[$linkStoryID])) echo html::a(inlink('view', "storyID=$linkStoryID"), "#$linkStoryID " . $story->extraStories[$linkStoryID]) . '<br />';
@@ -348,7 +348,7 @@ echo $gantti;
         <legend><?php echo $lang->story->legendChildStories;?></legend>
         <div>
           <?php
-          $childStories = explode(',', $story->childStories) ;    
+          $childStories = explode(',', $story->childStories) ;
           foreach($childStories as $childStoryID)
           {
               if(isset($story->extraStories[$childStoryID])) echo html::a(inlink('view', "storyID=$childStoryID"), "#$childStoryID " . $story->extraStories[$childStoryID]) . '<br />';

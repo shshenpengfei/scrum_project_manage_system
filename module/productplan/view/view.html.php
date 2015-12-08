@@ -106,6 +106,13 @@ js::import($webRoot .'js/ganttLine.js');
             <th width='25%' class='a-right'><?php echo $lang->productplan->title;?></th>
             <td <?php if($plan->deleted) echo "class='deleted'";?>><?php echo $plan->title;?></td>
           </tr>
+           <?php if($plan->isbacklog ==1){ ?>
+             <th width='25%' class='a-right'><?php echo $lang->productplan->plantype;?></th>
+             <td>积压类型</td>
+          <?}?>
+          <tr>
+
+          </tr>
           <tr>
             <th class='rowhead'><?php echo $lang->productplan->begin;?></th>
             <td><?php echo $plan->begin;?></td>
@@ -121,7 +128,7 @@ js::import($webRoot .'js/ganttLine.js');
   <tr>
     <td colspan="3">
         <table class='table-1 tablesorter a-center'>
-            <caption class='caption-tl'><?php echo $plan->title .$lang->colon . $lang->productplan->linkedStories;?></caption>
+            <caption class='caption-tl'><?php echo "【".$plan->title .$lang->productplan->common."】" . $lang->productplan->linkedStories." - ".$planStoriesNum;?></caption>
             <thead>
             <tr class='colhead'>
                 <th class='w-id'><?php echo $lang->idAB;?></th>
