@@ -15,8 +15,8 @@ class productplanModel extends model
 {
     /**
      * Get plan by id.
-     * 
-     * @param  int    $planID 
+     *
+     * @param  int    $planID
      * @param  bool   $setImgSize
      * @access public
      * @return object
@@ -29,9 +29,9 @@ class productplanModel extends model
     }
 
     /**
-     * Get list 
-     * 
-     * @param  int    $product 
+     * Get list
+     *
+     * @param  int    $product
      * @access public
      * @return object
      */
@@ -44,9 +44,9 @@ class productplanModel extends model
 
     /**
      * Get plan pairs.
-     * 
-     * @param  int    $product 
-     * @param  string $expired 
+     *
+     * @param  int    $product
+     * @param  string $expired
      * @access public
      * @return array
      */
@@ -63,9 +63,9 @@ class productplanModel extends model
     }
 
     /**
-     * Get plans for products 
-     * 
-     * @param  int    $products 
+     * Get plans for products
+     *
+     * @param  int    $products
      * @access public
      * @return void
      */
@@ -79,7 +79,7 @@ class productplanModel extends model
 
     /**
      * Create a plan.
-     * 
+     *
      * @access public
      * @return int
      */
@@ -95,8 +95,8 @@ class productplanModel extends model
 
     /**
      * Update a plan
-     * 
-     * @param  int    $planID 
+     *
+     * @param  int    $planID
      * @access public
      * @return array
      */
@@ -122,8 +122,8 @@ class productplanModel extends model
 
     /**
      * Link stories.
-     * 
-     * @param  int    $planID 
+     *
+     * @param  int    $planID
      * @access public
      * @return void
      */
@@ -136,13 +136,13 @@ class productplanModel extends model
             $this->dao->update(TABLE_STORY)->set('plan')->eq((int)$planID)->where('id')->eq((int)$storyID)->exec();
             $this->action->create('story', $storyID, 'linked2plan', '', $planID);
             $this->story->setStage($storyID);
-        }        
+        }
     }
 
     /**
-     * Unlink story 
-     * 
-     * @param  int    $storyID 
+     * Unlink story
+     *
+     * @param  int    $storyID
      * @access public
      * @return void
      */
@@ -152,5 +152,16 @@ class productplanModel extends model
         $this->dao->update(TABLE_STORY)->set('plan')->eq(0)->where('id')->eq((int)$storyID)->exec();
         $this->loadModel('story')->setStage($storyID);
         $this->loadModel('action')->create('story', $storyID, 'unlinkedfromplan', '', $planID);
+    }
+
+
+    public function getNoTesterNumFromStoryList($storyList){
+        $NoTesterNum=0;
+        foreach ($storyList as $key => $value) {
+          if($value->tester == "-"){
+            $NoTesterNum +=1;
+          }
+        }
+        return  $NoTesterNum;
     }
 }

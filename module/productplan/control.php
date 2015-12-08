@@ -13,8 +13,8 @@ class productplan extends control
 {
     /**
      * Common actions
-     * 
-     * @param  int    $productID 
+     *
+     * @param  int    $productID
      * @access public
      * @return void
      */
@@ -28,8 +28,8 @@ class productplan extends control
 
     /**
      * Create a plan.
-     * 
-     * @param  int    $product 
+     *
+     * @param  int    $product
      * @access public
      * @return void
      */
@@ -51,8 +51,8 @@ class productplan extends control
 
     /**
      * Edit a plan.
-     * 
-     * @param  int    $planID 
+     *
+     * @param  int    $planID
      * @access public
      * @return void
      */
@@ -78,11 +78,11 @@ class productplan extends control
         $this->view->option = $plan->isbacklog == '1' ? array($plan->isbacklog=>$this->lang->productplan->isbacklog) : array(''=>$this->lang->productplan->isbacklog);
         $this->display();
     }
-                                                          
+
     /**
      * Delete a plan.
-     * 
-     * @param  int    $planID 
+     *
+     * @param  int    $planID
      * @param  string $confirm  yes|no
      * @access public
      * @return void
@@ -103,8 +103,8 @@ class productplan extends control
 
     /**
      * Browse plans.
-     * 
-     * @param  int    $product 
+     *
+     * @param  int    $product
      * @access public
      * @return void
      */
@@ -120,8 +120,8 @@ class productplan extends control
 
     /**
      * View plan.
-     * 
-     * @param  int    $planID 
+     *
+     * @param  int    $planID
      * @access public
      * @return void
      */
@@ -134,9 +134,13 @@ class productplan extends control
 
         $this->commonAction($plan->product);
 
+        $planStories=$this->loadModel('story')->getPlanStories($planID,'all','id_desc',null,1);
+        $NoTesterNum = $this->loadModel('productplan')->getNoTesterNumFromStoryList($planStories);
+        $planStoriesNum="总计一共".count($planStories)."个story，其中".$NoTesterNum."个story还没有分解出测试任务";
         $this->view->header->title = $this->lang->productplan->view;
         $this->view->position[] = $this->lang->productplan->view;
-        $this->view->planStories= $this->loadModel('story')->getPlanStories($planID,'all','id_desc',null,1);
+        $this->view->planStories= $planStories;
+        $this->view->planStoriesNum= $planStoriesNum;
         $this->view->products   = $this->product->getPairs();
         $this->view->plan       = $plan;
         $this->view->actions    = $this->loadModel('action')->getList('productplan', $planID);
@@ -146,8 +150,8 @@ class productplan extends control
 
     /**
      * Link stories.
-     * 
-     * @param  int    $planID 
+     *
+     * @param  int    $planID
      * @access public
      * @return void
      */
@@ -171,9 +175,9 @@ class productplan extends control
     }
 
     /**
-     * Unlink story 
-     * 
-     * @param  int    $storyID 
+     * Unlink story
+     *
+     * @param  int    $storyID
      * @param  string $confirm  yes|no
      * @access public
      * @return void

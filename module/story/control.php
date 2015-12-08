@@ -13,7 +13,7 @@ class story extends control
 {
     /**
      * The construct function, load product, tree, user auto.
-     * 
+     *
      * @access public
      * @return void
      */
@@ -29,9 +29,9 @@ class story extends control
 
     /**
      * Create a story.
-     * 
-     * @param  int    $productID 
-     * @param  int    $moduleID 
+     *
+     * @param  int    $productID
+     * @param  int    $moduleID
      * @access public
      * @return void
      */
@@ -76,20 +76,20 @@ class story extends control
             {
                 die(js::locate($this->createLink('project', 'story', "projectID=$projectID"), 'parent'));
             }
-        
+
 
 
         }
 
         /* Set products, users and module. */
-        if($productID != 0) 
+        if($productID != 0)
         {
             $product  = $this->product->getById($productID);
             $products = $this->product->getPairs();
         }
         else
         {
-            $products = $this->product->getProductsByProject($projectID); 
+            $products = $this->product->getProductsByProject($projectID);
             foreach($products as $key => $title)
             {
                 $product = $this->product->getById($key);
@@ -138,7 +138,7 @@ class story extends control
             $keywords  = $oldBug->keywords;
             $spec      = $oldBug->steps;
             $pri       = $oldBug->pri;
-            if(strpos($oldBug->mailto, $oldBug->openedBy) === false) 
+            if(strpos($oldBug->mailto, $oldBug->openedBy) === false)
             {
                 $mailto = $oldBug->mailto . $oldBug->openedBy . ',';
             }
@@ -174,9 +174,9 @@ class story extends control
 
     /**
      * Create a batch stories.
-     * 
-     * @param  int    $productID 
-     * @param  int    $moduleID 
+     *
+     * @param  int    $productID
+     * @param  int    $moduleID
      * @access public
      * @return void
      */
@@ -219,7 +219,7 @@ class story extends control
         $this->view->products         = $products;
         $this->view->moduleID         = $moduleID;
         $this->view->moduleOptionMenu = $moduleOptionMenu;
-        $this->view->plans            = $plans; 
+        $this->view->plans            = $plans;
         $this->view->planID           = $planID;
         $this->view->pri              = $pri;
         $this->view->productID        = $productID;
@@ -232,8 +232,8 @@ class story extends control
 
     /**
      * The common action when edit or change a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return void
      */
@@ -262,8 +262,8 @@ class story extends control
 
     /**
      * Edit a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return void
      */
@@ -284,7 +284,7 @@ class story extends control
         }
 
         $this->commonAction($storyID);
-  
+
         /* Assign. */
         $this->view->header->title = $this->view->product->name . $this->lang->colon . $this->lang->story->edit . $this->lang->colon . $this->view->story->title;
         $this->view->position[]    = $this->lang->story->edit;
@@ -294,8 +294,8 @@ class story extends control
 
     /**
      * Change a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return void
      */
@@ -348,8 +348,8 @@ class story extends control
 
     /**
      * Activate a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return void
      */
@@ -375,9 +375,9 @@ class story extends control
 
     /**
      * View a story.
-     * 
-     * @param  int    $storyID 
-     * @param  int    $version 
+     *
+     * @param  int    $storyID
+     * @param  int    $version
      * @access public
      * @return void
      */
@@ -391,7 +391,7 @@ class story extends control
         $plan         = $this->dao->findById($story->plan)->from(TABLE_PRODUCTPLAN)->fetch('title');
         $bugs         = $this->dao->select('id,title')->from(TABLE_BUG)->where('story')->eq($storyID)->andWhere('deleted')->eq(0)->fetchAll();
         $fromBug      = $this->dao->select('id,title')->from(TABLE_BUG)->where('toStory')->eq($storyID)->fetch();
-        $cases        = $this->dao->select('id,title')->from(TABLE_CASE)->where('story')->eq($storyID)->fetchAll();
+        $cases        = $this->dao->select('id,title,openedBy')->from(TABLE_CASE)->where('story')->eq($storyID)->fetchAll();
         foreach($cases as $key=>$value){
             $cases[$key]->info = $this->loadModel("testcase")->getById('25');
         }
@@ -425,8 +425,8 @@ class story extends control
 
     /**
      * Delete a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @param  string $confirm  yes|no
      * @access public
      * @return void
@@ -447,8 +447,8 @@ class story extends control
 
     /**
      * Review a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return void
      */
@@ -515,8 +515,8 @@ class story extends control
 
     /**
      * Close a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return void
      */
@@ -555,11 +555,11 @@ class story extends control
 
     /**
      * Batch close story.
-     * 
+     *
      * @param  string $from productBrowse|projectStory|storyBatchClose
-     * @param  int    $productID 
-     * @param  int    $projectID 
-     * @param  string $orderBy 
+     * @param  int    $productID
+     * @param  int    $projectID
+     * @param  string $orderBy
      * @access public
      * @return void
      */
@@ -646,9 +646,9 @@ class story extends control
 
     /**
      * Tasks of a story.
-     * 
-     * @param  int    $storyID 
-     * @param  int    $projectID 
+     *
+     * @param  int    $storyID
+     * @param  int    $projectID
      * @access public
      * @return void
      */
@@ -662,10 +662,10 @@ class story extends control
 
     /**
      * AJAX: get stories of a project in html select.
-     * 
-     * @param  int    $projectID 
-     * @param  int    $productID 
-     * @param  int    $storyID 
+     *
+     * @param  int    $projectID
+     * @param  int    $productID
+     * @param  int    $storyID
      * @access public
      * @return void
      */
@@ -677,10 +677,10 @@ class story extends control
 
     /**
      * AJAX: get stories of a product in html select.
-     * 
-     * @param  int    $productID 
-     * @param  int    $moduleID 
-     * @param  int    $storyID 
+     *
+     * @param  int    $productID
+     * @param  int    $moduleID
+     * @param  int    $storyID
      * @access public
      * @return void
      */
@@ -718,9 +718,9 @@ class story extends control
 
     /**
      * Send email.
-     * 
-     * @param  int    $storyID 
-     * @param  int    $actionID 
+     *
+     * @param  int    $storyID
+     * @param  int    $actionID
      * @access public
      * @return void
      */
@@ -783,10 +783,10 @@ class story extends control
     }
     /**
      * The report page.
-     * 
-     * @param  int    $productID 
-     * @param  string $browseType 
-     * @param  int    $moduleID 
+     *
+     * @param  int    $productID
+     * @param  string $browseType
+     * @param  int    $moduleID
      * @access public
      * @return void
      */
@@ -820,17 +820,17 @@ class story extends control
         $this->view->checkedCharts = $this->post->charts ? join(',', $this->post->charts) : '';
         $this->display();
     }
- 
+
     /**
      * get data to export
-     * 
-     * @param  int $productID 
-     * @param  string $orderBy 
+     *
+     * @param  int $productID
+     * @param  string $orderBy
      * @access public
      * @return void
      */
     public function export($productID, $orderBy)
-    { 
+    {
         /* format the fields of every story in order to export data. */
         if($_POST)
         {
@@ -915,7 +915,7 @@ class story extends control
                 if(isset($users[$story->openedBy]))     $story->openedBy     = $users[$story->openedBy];
                 if(isset($users[$story->assignedTo]))   $story->assignedTo   = $users[$story->assignedTo];
                 if(isset($users[$story->lastEditedBy])) $story->lastEditedBy = $users[$story->lastEditedBy];
-                if(isset($users[$story->closedBy]))     $story->closedBy     = $users[$story->closedBy]; 
+                if(isset($users[$story->closedBy]))     $story->closedBy     = $users[$story->closedBy];
 
                 $story->openedDate     = substr($story->openedDate, 0, 10);
                 $story->assignedDate   = substr($story->assignedDate, 0, 10);

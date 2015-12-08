@@ -15,9 +15,9 @@ class storyModel extends model
 {
     /**
      * Get a story by id.
-     * 
-     * @param  int    $storyID 
-     * @param  int    $version 
+     *
+     * @param  int    $storyID
+     * @param  int    $version
      * @param  bool   $setImgSize
      * @access public
      * @return object|bool
@@ -70,9 +70,9 @@ class storyModel extends model
     }
 
     /**
-     * Get affected things. 
-     * 
-     * @param  object  $story 
+     * Get affected things.
+     *
+     * @param  object  $story
      * @access public
      * @return object
      */
@@ -107,7 +107,7 @@ class storyModel extends model
 
     /**
      * Create a story.
-     * 
+     *
      * @access public
      * @return int|bool the id of the created story or false when error.
      */
@@ -146,7 +146,7 @@ class storyModel extends model
             $data->verify  = $this->post->verify;
             $this->dao->insert(TABLE_STORYSPEC)->data($data)->exec();
 
-            if($projectID != 0) 
+            if($projectID != 0)
             {
                 $this->dao->insert(TABLE_PROJECTSTORY)
                     ->set('company')->eq(1)
@@ -156,7 +156,7 @@ class storyModel extends model
                     ->set('version')->eq(1)
                     ->exec();
             }
-            
+
             if($bugID > 0)
             {
                 $bug->toStory      = $storyID;
@@ -168,7 +168,7 @@ class storyModel extends model
                 $bug->closedDate   = $now;
                 $bug->assignedTo   = 'closed';
                 $this->dao->update(TABLE_BUG)->data($bug)->where('id')->eq($bugID)->exec();
-    
+
                 $this->loadModel('action')->create('bug', $bugID, 'ToStory', '', $storyID);
                 $this->action->create('bug', $bugID, 'Closed');
 
@@ -177,13 +177,13 @@ class storyModel extends model
                     ->where('objectType')->eq('bug')
                     ->andWhere('objectID')->eq($bugID)
                     ->fetchAll();
-                if(!empty($files)) 
-                { 
+                if(!empty($files))
+                {
                     foreach($files as $file)
                     {
                         $file->objectType = 'story';
-                        $file->objectID = $storyID; 
-                        unset($file->id); 
+                        $file->objectID = $storyID;
+                        unset($file->id);
                         $this->dao->insert(TABLE_FILE)->data($file)->exec();
                     }
                 }
@@ -195,7 +195,7 @@ class storyModel extends model
 
     /**
      * Create a batch stories.
-     * 
+     *
      * @access public
      * @return int|bool the id of the created story or false when error.
      */
@@ -223,7 +223,7 @@ class storyModel extends model
                     ->autoCheck()
                     ->batchCheck($this->config->story->create->requiredFields, 'notempty')
                     ->exec();
-                if(dao::isError()) 
+                if(dao::isError())
                 {
                     echo js::error(dao::getError());
                     die(js::reload('parent'));
@@ -259,8 +259,8 @@ class storyModel extends model
 
     /**
      * Change a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return array  the change of the story.
      */
@@ -318,8 +318,8 @@ class storyModel extends model
 
     /**
      * Update a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return array the changes of the story.
      */
@@ -359,8 +359,8 @@ class storyModel extends model
 
     /**
      * Review a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return bool
      */
@@ -419,8 +419,8 @@ class storyModel extends model
 
     /**
      * Close a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return bool
      */
@@ -435,7 +435,7 @@ class storyModel extends model
             ->add('closedBy',   $this->app->user->account)
             ->add('assignedTo',   'closed')
             ->add('assignedDate', $now)
-            ->add('status', 'closed') 
+            ->add('status', 'closed')
             ->removeIF($this->post->closedReason != 'duplicate', 'duplicateStory')
             ->removeIF($this->post->closedReason != 'subdivided', 'childStories')
             ->setIF($this->post->closedReason == 'done', 'stage', 'released')
@@ -453,7 +453,7 @@ class storyModel extends model
 
     /**
      * Batch close story.
-     * 
+     *
      * @access public
      * @return void
      */
@@ -503,7 +503,7 @@ class storyModel extends model
                     ->checkIF($story->closedReason == 'subdivided', 'childStories',   'notempty')
                     ->where('id')->eq($storyID)->exec();
 
-                if(!dao::isError()) 
+                if(!dao::isError())
                 {
                     $allChanges[$storyID] = common::createChanges($oldStory, $story);
                 }
@@ -519,8 +519,8 @@ class storyModel extends model
 
     /**
      * Activate a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return bool
      */
@@ -532,7 +532,7 @@ class storyModel extends model
             ->add('lastEditedBy', $this->app->user->account)
             ->add('lastEditedDate', $now)
             ->add('assignedDate', $now)
-            ->add('status', 'active') 
+            ->add('status', 'active')
             ->add('closedBy', '')
             ->add('closedReason', '')
             ->add('closedDate', '0000-00-00')
@@ -546,9 +546,9 @@ class storyModel extends model
 
     /**
      * Set stage of a story.
-     * 
-     * @param  int    $storyID 
-     * @param  string $customStage 
+     *
+     * @param  int    $storyID
+     * @param  string $customStage
      * @access public
      * @return bool
      */
@@ -616,15 +616,15 @@ class storyModel extends model
         $testTasks  = isset($tasks['test'])  ? count($tasks['test'])  : 0;
 
         /**
-         * Judge stage according to the devel and test tasks' status. 
-         * 
+         * Judge stage according to the devel and test tasks' status.
+         *
          * 1. one doing devel task, all test tasks waiting, set stage as developing.
          * 2. all devel tasks done, all test tasks waiting, set stage as developed.
-         * 3. one test task doing, set stage as testing. 
+         * 3. one test task doing, set stage as testing.
          * 4. all test tasks done, still some devel tasks not done(wait, doing), set stage as testing.
          * 5. all test tasks done, all devel tasks done, set stage as tested.
          */
-        if($statusList['devel']['doing'] > 0 and $statusList['test']['wait'] == $testTasks) $stage = 'developing'; 
+        if($statusList['devel']['doing'] > 0 and $statusList['test']['wait'] == $testTasks) $stage = 'developing';
         if($statusList['devel']['done'] == $develTasks and $develTasks > 0 and $statusList['test']['wait'] == $testTasks) $stage = 'developed';
         if($statusList['test']['doing'] > 0) $stage = 'testing';
         if(($statusList['devel']['wait'] > 0 or $statusList['devel']['doing'] > 0) and $statusList['test']['done'] == $testTasks and $testTasks > 0) $stage = 'testing';
@@ -636,12 +636,12 @@ class storyModel extends model
 
     /**
      * Get stories list of a product.
-     * 
-     * @param  int           $productID 
-     * @param  array|string  $moduleIds 
-     * @param  string        $status 
-     * @param  string        $orderBy 
-     * @param  object        $pager 
+     *
+     * @param  int           $productID
+     * @param  array|string  $moduleIds
+     * @param  string        $status
+     * @param  string        $orderBy
+     * @param  object        $pager
      * @access public
      * @return array
      */
@@ -651,7 +651,7 @@ class storyModel extends model
             ->from(TABLE_STORY)->alias('t1')
             ->leftJoin(TABLE_PRODUCTPLAN)->alias('t2')->on('t1.plan = t2.id')
             ->where('t1.product')->in($productID)
-            ->beginIF(!empty($moduleIds))->andWhere('module')->in($moduleIds)->fi() 
+            ->beginIF(!empty($moduleIds))->andWhere('module')->in($moduleIds)->fi()
             ->beginIF($status != 'all')->andWhere('status')->in($status)->fi()
             ->andWhere('t1.deleted')->eq(0)
             ->beginIF($action != 'all')->andWhere('t1.status')->eq('active')->fi()
@@ -661,11 +661,11 @@ class storyModel extends model
 
     /**
      * Get stories pairs of a product.
-     * 
-     * @param  int           $productID 
-     * @param  array|string  $moduleIds 
-     * @param  string        $status 
-     * @param  string        $order 
+     *
+     * @param  int           $productID
+     * @param  array|string  $moduleIds
+     * @param  string        $status
+     * @param  string        $order
      * @access public
      * @return array
      */
@@ -686,11 +686,11 @@ class storyModel extends model
 
     /**
      * Get stories by assignedTo.
-     * 
-     * @param  int    $productID 
-     * @param  string $account 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     *
+     * @param  int    $productID
+     * @param  string $account
+     * @param  string $orderBy
+     * @param  object $pager
      * @access public
      * @return array
      */
@@ -701,11 +701,11 @@ class storyModel extends model
 
     /**
      * Get stories by openedBy.
-     * 
-     * @param  int    $productID 
-     * @param  string $account 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     *
+     * @param  int    $productID
+     * @param  string $account
+     * @param  string $orderBy
+     * @param  object $pager
      * @access public
      * @return array
      */
@@ -716,11 +716,11 @@ class storyModel extends model
 
     /**
      * Get stories by reviewedBy.
-     * 
-     * @param  int    $productID 
-     * @param  string $account 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     *
+     * @param  int    $productID
+     * @param  string $account
+     * @param  string $orderBy
+     * @param  object $pager
      * @access public
      * @return array
      */
@@ -731,11 +731,11 @@ class storyModel extends model
 
     /**
      * Get stories by closedBy.
-     * 
-     * @param  int    $productID 
-     * @param  string $account 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     *
+     * @param  int    $productID
+     * @param  string $account
+     * @param  string $orderBy
+     * @param  object $pager
      * @return array
      */
     public function getByClosedBy($productID, $account, $orderBy, $pager)
@@ -745,11 +745,11 @@ class storyModel extends model
 
     /**
      * Get stories by status.
-     * 
-     * @param  int    $productID 
-     * @param  string $orderBy 
-     * @param  object $pager 
-     * @param  string $status 
+     *
+     * @param  int    $productID
+     * @param  string $orderBy
+     * @param  object $pager
+     * @param  string $status
      * @access public
      * @return array
      */
@@ -760,12 +760,12 @@ class storyModel extends model
 
     /**
      * Get stories by a field.
-     * 
-     * @param  int    $productID 
-     * @param  string $fieldName 
-     * @param  mixed  $fieldValue 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     *
+     * @param  int    $productID
+     * @param  string $fieldName
+     * @param  mixed  $fieldValue
+     * @param  string $orderBy
+     * @param  object $pager
      * @param  string $operator     equal|include
      * @access public
      * @return array
@@ -786,20 +786,20 @@ class storyModel extends model
 
     /**
      * Get stories through search.
-     * 
+     *
      * @access public
-     * @param  int    $productID 
-     * @param  int    $queryID 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     * @param  int    $productID
+     * @param  int    $queryID
+     * @param  string $orderBy
+     * @param  object $pager
      * @access public
      * @return array
      */
     public function getBySearch($productID, $queryID, $orderBy, $pager, $projectID = '')
     {
-        if($projectID != '') 
+        if($projectID != '')
         {
-            $products = $this->loadModel('project')->getProducts($projectID); 
+            $products = $this->loadModel('project')->getProducts($projectID);
         }
         else
         {
@@ -830,11 +830,11 @@ class storyModel extends model
 
     /**
      * Get stories by a sql.
-     * 
-     * @param  int    $productID 
-     * @param  string $sql 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     *
+     * @param  int    $productID
+     * @param  string $sql
+     * @param  string $orderBy
+     * @param  object $pager
      * @access public
      * @return array
      */
@@ -863,12 +863,12 @@ class storyModel extends model
         }
         return $stories;
     }
-    
+
     /**
      * Get stories list of a project.
-     * 
-     * @param  int    $projectID 
-     * @param  string $orderBy 
+     *
+     * @param  int    $projectID
+     * @param  string $orderBy
      * @access public
      * @return array
      */
@@ -885,9 +885,9 @@ class storyModel extends model
 
     /**
      * Get stories pairs of a project.
-     * 
-     * @param  int    $projectID 
-     * @param  int    $productID 
+     *
+     * @param  int    $projectID
+     * @param  int    $productID
      * @access public
      * @return array
      */
@@ -909,11 +909,11 @@ class storyModel extends model
 
     /**
      * Get stories list of a plan.
-     * 
-     * @param  int    $planID 
-     * @param  string $status 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     *
+     * @param  int    $planID
+     * @param  string $status
+     * @param  string $orderBy
+     * @param  object $pager
      * @access public
      * @return array
      */
@@ -924,43 +924,37 @@ class storyModel extends model
             ->beginIF($status != 'all')->andWhere('status')->in($status)->fi()
             ->andWhere('deleted')->eq(0)
             ->orderBy($orderBy)->page($pager)->fetchAll('id');
-        
+
         $this->loadModel('common')->saveQueryCondition($this->dao->get(), 'story');
-
         foreach ($stories as $a =>$b){
-        $tester  = $this->dao->select('assignedTo,finishedBy')->from(TABLE_TASK)
-            ->where('story')->eq($a)->andWhere('type')->eq('test')->fetchall();
+          $tester  = $this->dao->select('assignedTo,finishedBy')->from(TABLE_TASK)
+              ->where('story')->eq($a)->andWhere('type')->eq('test')->fetchall();
+          $stories[$a]->tester=isset($tester[0]->finishedBy) && !empty($tester[0]->finishedBy) ?$tester[0]->finishedBy
+              :(isset($tester[0]->assignedTo)?$tester[0]->assignedTo:'-');
 
-	if(isset($_GET[debug])){
-		var_dump($tester);
-	}
-        $stories[$a]->tester=isset($tester[0]->finishedBy) && !empty($tester[0]->finishedBy) ?$tester[0]->finishedBy
-            :(isset($tester[0]->assignedTo)?$tester[0]->assignedTo:'-');
-
-        $taskCounts= $this->dao->select('COUNT(*) AS tasks')
-                ->from(TABLE_TASK)
-                ->where('story')->eq($a)
-                ->fetchAll();
-        $stories[$a]->taskCounts=isset($taskCounts[0]->tasks)?$taskCounts[0]->tasks:'-';
+          $taskCounts= $this->dao->select('COUNT(*) AS tasks')
+                  ->from(TABLE_TASK)
+                  ->where('story')->eq($a)
+                  ->fetchAll();
+          $stories[$a]->taskCounts=isset($taskCounts[0]->tasks)?$taskCounts[0]->tasks:'-';
 
         }
-     
+
         if($tasklist==1){
             foreach ($stories as $key=>$value){
             $stories[$key]->tasklist=$this->loadModel('build')->getstoryInfoByStoryid($key, $version, true);;
-            }    
+            }
         }
- 
         return $stories;
     }
 
     /**
      * Get stories pairs of a plan.
-     * 
-     * @param  int    $planID 
-     * @param  string $status 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     *
+     * @param  int    $planID
+     * @param  string $status
+     * @param  string $orderBy
+     * @param  object $pager
      * @access public
      * @return array
      */
@@ -975,11 +969,11 @@ class storyModel extends model
 
     /**
      * Get stories of a user.
-     * 
-     * @param  string $account 
-     * @param  string $type         the query type 
-     * @param  string $orderBy 
-     * @param  object $pager 
+     *
+     * @param  string $account
+     * @param  string $type         the query type
+     * @param  string $orderBy
+     * @param  object $pager
      * @access public
      * @return array
      */
@@ -996,16 +990,16 @@ class storyModel extends model
             ->beginIF($type == 'reviewedby')->andWhere('reviewedby')->like('%' . $this->app->user->account . '%')->fi()
             ->beginIF($type == 'closedby')->andWhere('closedby')->eq($this->app->user->account)->fi()
             ->orderBy($orderBy)->page($pager)->fetchAll();
-        
+
         $this->loadModel('common')->saveQueryCondition($this->dao->get(), 'story');
-        
+
         return $stories;
     }
-    
+
     /**
      * Get doing projects' members of a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return array
      */
@@ -1022,8 +1016,8 @@ class storyModel extends model
 
     /**
      * Get version of a story.
-     * 
-     * @param  int    $storyID 
+     *
+     * @param  int    $storyID
      * @access public
      * @return int
      */
@@ -1034,7 +1028,7 @@ class storyModel extends model
 
     /**
      * Get versions of some stories.
-     * 
+     *
      * @param  array|string story id list
      * @access public
      * @return array
@@ -1045,9 +1039,9 @@ class storyModel extends model
     }
 
     /**
-     * Format stories 
-     * 
-     * @param  array    $stories 
+     * Format stories
+     *
+     * @param  array    $stories
      * @access public
      * @return void
      */
@@ -1066,8 +1060,8 @@ class storyModel extends model
 
     /**
      * Extract accounts from some stories.
-     * 
-     * @param  array  $stories 
+     *
+     * @param  array  $stories
      * @access public
      * @return array
      */
@@ -1086,8 +1080,8 @@ class storyModel extends model
 
     /**
      * Extract accounts from a story.
-     * 
-     * @param  object  $story 
+     *
+     * @param  object  $story
      * @access public
      * @return array
      */
@@ -1103,8 +1097,8 @@ class storyModel extends model
 
     /**
      * Merge the default chart settings and the settings of current chart.
-     * 
-     * @param  string    $chartType 
+     *
+     * @param  string    $chartType
      * @access public
      * @return void
      */
@@ -1122,8 +1116,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per product 
-     * 
+     * Get report data of storys per product
+     *
      * @access public
      * @return array
      */
@@ -1139,8 +1133,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per module 
-     * 
+     * Get report data of storys per module
+     *
      * @access public
      * @return array
      */
@@ -1156,8 +1150,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per source 
-     * 
+     * Get report data of storys per source
+     *
      * @access public
      * @return array
      */
@@ -1173,8 +1167,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per plan 
-     * 
+     * Get report data of storys per plan
+     *
      * @access public
      * @return array
      */
@@ -1190,8 +1184,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per status 
-     * 
+     * Get report data of storys per status
+     *
      * @access public
      * @return array
      */
@@ -1206,8 +1200,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per stage 
-     * 
+     * Get report data of storys per stage
+     *
      * @access public
      * @return array
      */
@@ -1222,8 +1216,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per pri 
-     * 
+     * Get report data of storys per pri
+     *
      * @access public
      * @return array
      */
@@ -1238,8 +1232,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per estimate 
-     * 
+     * Get report data of storys per estimate
+     *
      * @access public
      * @return array
      */
@@ -1251,8 +1245,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per openedBy 
-     * 
+     * Get report data of storys per openedBy
+     *
      * @access public
      * @return array
      */
@@ -1268,8 +1262,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per assignedTo 
-     * 
+     * Get report data of storys per assignedTo
+     *
      * @access public
      * @return array
      */
@@ -1285,8 +1279,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per closedReason 
-     * 
+     * Get report data of storys per closedReason
+     *
      * @access public
      * @return array
      */
@@ -1301,8 +1295,8 @@ class storyModel extends model
     }
 
     /**
-     * Get report data of storys per change 
-     * 
+     * Get report data of storys per change
+     *
      * @access public
      * @return array
      */
@@ -1315,9 +1309,9 @@ class storyModel extends model
 
     /**
      * Adjust the action clickable.
-     * 
-     * @param  object $story 
-     * @param  string $action 
+     *
+     * @param  object $story
+     * @param  string $action
      * @access public
      * @return void
      */
