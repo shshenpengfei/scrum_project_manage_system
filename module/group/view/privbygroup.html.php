@@ -21,7 +21,7 @@
     <tr class='colhead'>
       <th><?php echo $lang->group->module;?></th>
       <th><?php echo $lang->group->method;?></th>
-    </tr>  
+    </tr>
     <?php foreach($lang->resource as $moduleName => $moduleActions):?>
     <tr class='f-14px <?php echo cycle('even, bg-yellow');?>'>
       <th class='a-right'><?php echo $this->lang->$moduleName->common;?><?php echo html::selectAll($moduleName, 'checkbox')?></td>
@@ -40,7 +40,7 @@
     <tr>
       <th class='rowhead'><?php echo $lang->selectAll . html::selectAll('', 'checkbox')?></th>
       <td class='a-center'>
-        <?php 
+        <?php
         echo html::submitButton($lang->save);
         echo html::linkButton($lang->goback, $this->createLink('group', 'browse'));
         echo html::hidden('foo'); // Just a hidden var, to make sure $_POST is not empty.

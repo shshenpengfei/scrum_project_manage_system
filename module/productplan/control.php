@@ -128,12 +128,9 @@ class productplan extends control
     public function view($planID = 0)
     {
         $this->session->set('storyList', $this->app->getURI(true));
-
         $plan = $this->productplan->getByID($planID, true);
         if(!$plan) die(js::error($this->lang->notFound) . js::locate('back'));
-
         $this->commonAction($plan->product);
-
         $planStories=$this->loadModel('story')->getPlanStories($planID,'all','id_desc',null,1);
         $NoTesterNum = $this->loadModel('productplan')->getNoTesterNumFromStoryList($planStories);
         $planStoriesNum="总计一共".count($planStories)."个story，其中".$NoTesterNum."个story还没有分解出测试任务";

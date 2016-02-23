@@ -5,3 +5,4 @@ www/data/
 config/my.php
 workspace.xml
 .idea
+module/mail/ext/config/zzzemail.php

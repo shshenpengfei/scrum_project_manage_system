@@ -13,7 +13,7 @@
 <?php include '../../common/view/header.html.php';?>
 
 <?php
-if(!empty($stories)){
+if(!empty($stories) && true ==  false){
 
 $webRoot      = PM_SITE;
 $defaultTheme = $webRoot . 'theme/default/';

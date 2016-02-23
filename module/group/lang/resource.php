@@ -47,10 +47,6 @@ $lang->moduleOrder[125] = 'tree';
 $lang->moduleOrder[130] = 'api';
 $lang->moduleOrder[135] = 'file';
 $lang->moduleOrder[140] = 'misc';
-
-$lang->moduleOrder[145] = 'sql';
-$lang->moduleOrder[150] = 'beginwork';
-$lang->moduleOrder[155] = 'endwork';
 /* Index module. */
 $lang->resource->index->index = 'index';
 
@@ -511,6 +507,17 @@ $lang->resource->svn->apiSync = 'apiSync';
 $lang->svn->methodOrder[5]  = 'diff';
 $lang->svn->methodOrder[10] = 'cat';
 $lang->svn->methodOrder[15] = 'apiSync';
+
+
+/* GIT. */
+$lang->resource->git->diff    = 'diff';
+$lang->resource->git->cat     = 'cat';
+$lang->resource->git->apiSync = 'apiSync';
+
+$lang->git->methodOrder[5]  = 'diff';
+$lang->git->methodOrder[10] = 'cat';
+$lang->git->methodOrder[15] = 'apiSync';
+
 
 /* Company. */
 $lang->resource->company->index  = 'index';

@@ -369,6 +369,17 @@ EOT;
      */
     public function getWorkload()
     {
+        $workload = array();
+        $users=$this->loadModel("user")->getList();
+
+
+        foreach($users as $id=>$userinfo){
+            $workload[$userinfo->account]['userinfo']=$userinfo;
+        }
+
+        //var_dump($workload);
+
+
         $tasks = $this->dao->select('t1.*, t2.name as projectName')
             ->from(TABLE_TASK)->alias('t1')
             ->leftJoin(TABLE_PROJECT)->alias('t2')
@@ -383,7 +394,6 @@ EOT;
             ->where('t1.deleted')->eq(0)
             ->andWhere('t1.status')->eq('active')
             ->fetchGroup('assignedTo');
-        $workload = array();
         foreach($tasks as $user => $userTasks)
         {
             if($user)
@@ -461,6 +471,52 @@ EOT;
             ->fetch();
         return $taskInfo;
     }
+
+
+    /**
+     * 贡献排行榜
+     * @return mixed
+     */
+    public function  top(){
+        $userlist = $this->dao->select('id,realname,dept,account')->from(TABLE_USER)
+            ->where('deleted')->eq(0)
+            ->orderBy('id desc')->fetchAll();
+        foreach ($userlist as $u => $uinfo) {
+            //被指派任务总数
+            $tasknum = $this->dao->select('COUNT(*) AS tnum')->from(TABLE_TASK)
+                ->where('assignedTo')->eq($uinfo->account)->fetch();
+            $userlist[$u]->tasknum=$tasknum->tnum;
+
+            //未完成任务总数
+            $unFinishtasknum = $this->dao->select('COUNT(*) AS tnum')->from(TABLE_TASK)
+                ->where('assignedTo')->eq($uinfo->account)->andwhere('status')
+                ->in('doing','wait','')->fetch();
+            $userlist[$u]->unFinishtasknum=$unFinishtasknum->tnum;
+
+            //被指派bug总数
+            $bugnum = $this->dao->select('COUNT(*) AS bnum')->from(TABLE_BUG)
+                ->where('assignedTo')->eq($uinfo->account)->fetch();
+            $userlist[$u]->bugnum=$bugnum->bnum;
+
+            //未完成BUG总数
+            $unFinishBugnum = $this->dao->select('COUNT(*) AS tnum')->from(TABLE_BUG)
+                ->where('assignedTo')->eq($uinfo->account)->andwhere('status')
+                ->in('doing','wait','')->fetch();
+            $userlist[$u]->unFinishBugnum=$unFinishBugnum->tnum;
+
+            //提出bug总数
+            $create_bugnum = $this->dao->select('COUNT(*) AS bnum')->from(TABLE_BUG)
+                ->where('openedBy')->eq($uinfo->account)->fetch();
+            $userlist[$u]->create_bugnum=$create_bugnum->bnum;
+
+            //事项总数
+            $todonum = $this->dao->select('COUNT(*) AS dnum')->from(TABLE_TODO)
+                ->where('account')->eq($uinfo->account)->fetch();
+            $userlist[$u]->todonum=$todonum->dnum;
+        }
+        return $userlist;
+    }
+
 
 
 

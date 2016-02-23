@@ -69,6 +69,7 @@ class productplanModel extends model
      * @access public
      * @return void
      */
+
     public function getForProducts($products)
     {
         return array('' => '') + $this->dao->select('id,title')->from(TABLE_PRODUCTPLAN)

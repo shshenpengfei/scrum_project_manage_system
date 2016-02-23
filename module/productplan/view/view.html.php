@@ -106,12 +106,16 @@ js::import($webRoot .'js/ganttLine.js');
             <th width='25%' class='a-right'><?php echo $lang->productplan->title;?></th>
             <td <?php if($plan->deleted) echo "class='deleted'";?>><?php echo $plan->title;?></td>
           </tr>
-           <?php if($plan->isbacklog ==1){ ?>
-             <th width='25%' class='a-right'><?php echo $lang->productplan->plantype;?></th>
-             <td>积压类型</td>
-          <?}?>
-          <tr>
-
+            <?php
+            if($plan->isbacklog == 1){
+            ?>
+              <tr>
+                 <th width='25%' class='a-right'><?php echo $lang->productplan->plantype;?></th>
+                 <td>积压类型</td>
+              <tr>
+            <?php
+            }
+            ?>
           </tr>
           <tr>
             <th class='rowhead'><?php echo $lang->productplan->begin;?></th>

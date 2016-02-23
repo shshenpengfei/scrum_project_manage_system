@@ -310,7 +310,6 @@ class commonModel extends model
     public static function printModuleMenu($moduleName)
     {
         global $lang, $app;
-
         if(!isset($lang->$moduleName->menu)) {echo "<ul></ul>"; return;}
 
         /* Get the sub menus of the module, and get current module and method. */
@@ -326,7 +325,7 @@ class commonModel extends model
             ksort($lang->$moduleName->menuOrder, SORT_ASC);
             if(isset($menus->list)) 
             {
-                $submenus->list = $menus->list; 
+                $submenus->list = $menus->list;
                 unset($menus->list);
             }
             foreach($lang->$moduleName->menuOrder as $order)  
@@ -340,7 +339,7 @@ class commonModel extends model
             }
             foreach($menus as $key => $menu)
             {
-                $submenus->$key = $menu; 
+                $submenus->$key = $menu;
             }
         }
 

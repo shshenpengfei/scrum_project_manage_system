@@ -13,8 +13,8 @@
                     <th>用户ID</th>
                     <th>所在组</th>
                     <th>姓名</th>
-                    <th>TASK</th>
-                    <th>未完成TASK</th>
+                    <th>任务总数</th>
+                    <th>未完成任务</th>
                     <th>事项总数</th>
                     <th>BUG</th>
                     <th>未完成BUG</th>
@@ -54,6 +54,8 @@
                         <td>
                             <?php
                                 echo $item->tasknum;
+                            //                            common::printLink('user','task',"account=$item->realname",$item->unFirealnamenishBugnum);
+
                             ?>
                         </td>
 
@@ -77,7 +79,7 @@
 
                         <td>
                             <?php
-                            echo $item->unFinishBugnum;
+                            echo $item->unFirealnamenishBugnum;
                             ?>
                         </td>
 

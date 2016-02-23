@@ -1,10 +1,6 @@
 <?php include '../../common/view/header.html.php';?>
 <table class="cont-lt1">
   <tr valign='top'>
-    <td class='side'>
-      <?php include 'blockreportlist.html.php';?>
-    </td>
-    <td class='divider'></td>
     <td>
       <table class='table-1 fixed colored tablesorter datatable border-sep' id="workload">
         <thead>
@@ -30,7 +26,7 @@
         $i = 1;
         $taskNum = empty($load['task']) ? 0 : count($load['task']);
         $bugNum  = empty($load['bug'])  ? 0 : count($load['bug']);
-        $max     = $taskNum > $bugNum ? 'task' : 'bug';
+        $max     = $taskNum >= $bugNum ? 'task' : 'bug';
         ?>
         <?php foreach($load[$max] as $key => $val):?>
           <tr class="a-center">
